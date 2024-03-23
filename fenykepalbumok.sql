@@ -310,31 +310,31 @@ insert into kategoria (megnevezes, leiras) values ('Poaceae', 'nisl duis ac nibh
 
 --Hozzászólás insertek
 
-insert into hozzaszolas (email, kep_id, szoveg) values ('mglanester0@blogs.com', 45, 'Maecenas ut massa quis augue luctus tincidunt.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('mdelafield1@tmall.com', 16, 'Suspendisse potenti. Nullam porttitor lacus at turpis.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('rjaumet2@taobao.com', 12, 'Aenean lectus.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('qseebert3@exblog.jp', 46, 'Vivamus vestibulum sagittis sapien.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('sferrara4@people.com.cn', 43, 'Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('rgreaves5@ox.ac.uk', 27, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('nmarcus6@cyberchimps.com', 44, 'Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('aadie7@slashdot.org', 31, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('ykershow8@seesaa.net', 29, 'Praesent blandit lacinia erat.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('rdredge9@ow.ly', 50, 'In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('mfirtha@google.co.jp', 18, 'Duis aliquam convallis nunc.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('jlesarrb@wikipedia.org', 25, 'Proin eu mi.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('jlarmuthc@wp.com', 27, 'Nunc rhoncus dui vel sem. Sed sagittis.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('kpeacocked@amazon.co.uk', 13, 'Curabitur in libero ut massa volutpat convallis.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('mcattericke@meetup.com', 23, 'Vestibulum sed magna at nunc commodo placerat.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('umooganf@lulu.com', 33, 'Quisque id justo sit amet sapien dignissim vestibulum.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('pfraulog@imgur.com', 17, 'Aenean fermentum.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('cverrickh@blinklist.com', 15, 'Morbi vel lectus in quam fringilla rhoncus.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('gmancei@home.pl', 38, 'Aliquam erat volutpat. In congue.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('kcanfieldj@printfriendly.com', 6, 'Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('sjeavonsk@so-net.ne.jp', 38, 'Nulla ut erat id mauris vulputate elementum.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('lkobal@squidoo.com', 6, 'Phasellus id sapien in sapien iaculis congue.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('mturfusm@linkedin.com', 34, 'Phasellus in felis. Donec semper sapien a libero.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('feptonn@eepurl.com', 45, 'Donec semper sapien a libero.');
-insert into hozzaszolas (email, kep_id, szoveg) values ('bwarbyso@nationalgeographic.com', 13, 'Phasellus sit amet erat.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('harrington1@technorati.com', 44, 'In est risus, auctor sed, tristique in, tempus sit amet, sem.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('cle3@oaic.gov.au', 8, 'Curabitur at ipsum ac tellus semper interdum.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('harrington1@technorati.com', 17, 'Donec ut mauris eget massa tempor convallis.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('wmillier0@imageshack.us', 40, 'Donec ut dolor.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('hdhennin2@earthlink.net', 39, 'Aliquam erat volutpat.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('spinnegar4@twitter.com', 32, 'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('harrington1@technorati.com', 9, 'Donec semper sapien a libero. Nam dui.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('spinnegar4@twitter.com', 11, 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('csnellman5@rambler.ru', 3, 'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('csnellman5@rambler.ru', 14, 'Vestibulum ac est lacinia nisi venenatis tristique.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('hdhennin2@earthlink.net', 36, 'In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('harrington1@technorati.com', 32, 'Duis at velit eu est congue elementum.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('harrington1@technorati.com', 32, 'Donec ut mauris eget massa tempor convallis.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('cle3@oaic.gov.au', 27, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('spinnegar4@twitter.com', 32, 'Morbi quis tortor id nulla ultrices aliquet.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('cle3@oaic.gov.au', 4, 'Etiam pretium iaculis justo. In hac habitasse platea dictumst.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('spinnegar4@twitter.com', 24, 'Vestibulum sed magna at nunc commodo placerat.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('wmillier0@imageshack.us', 1, 'Nulla ut erat id mauris vulputate elementum. Nullam varius.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('harrington1@technorati.com', 39, 'Donec posuere metus vitae ipsum.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('spinnegar4@twitter.com', 28, 'Ut at dolor quis odio consequat varius.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('spinnegar4@twitter.com', 25, 'Integer ac neque. Duis bibendum.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('harrington1@technorati.com', 10, 'Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('cle3@oaic.gov.au', 4, 'Integer ac neque.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('harrington1@technorati.com', 16, 'Duis ac nibh.');
+insert into hozzaszolas (email, kep_id, szoveg) values ('hdhennin2@earthlink.net', 12, 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien');
 
 --Album insertek
 
@@ -370,7 +370,7 @@ insert into kategoria_kep (kategoria_id, kep_id) values (9, 25);
 --Album-kép insertek
 
 insert into album_kep (album_id, kep_id) values (8, 9);
-insert into album_kep (album_id, kep_id) values (6, 12);
+insert into album_kep (album_id, kep_id) values (6, 13);
 insert into album_kep (album_id, kep_id) values (10, 31);
 insert into album_kep (album_id, kep_id) values (4, 4);
 insert into album_kep (album_id, kep_id) values (6, 33);
