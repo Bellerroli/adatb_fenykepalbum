@@ -16,7 +16,7 @@ BEGIN
   INTO :new.hely_id
   FROM dual;
 END;
-
+/
 CREATE TABLE felhasznalok(
     email VARCHAR2(50) PRIMARY KEY,
     teljes_nev VARCHAR2(100) NOT NULL,
@@ -50,7 +50,7 @@ BEGIN
   INTO :new.kep_id
   FROM dual;
 END;
-
+/
 CREATE TABLE album(
     album_id INTEGER PRIMARY KEY,
     email VARCHAR2(50) NOT NULL,
@@ -70,6 +70,7 @@ BEGIN
   INTO :new.album_id
   FROM dual;
 END;
+/
 
 CREATE TABLE kategoria(
     kategoria_id INTEGER PRIMARY KEY,
@@ -87,6 +88,7 @@ BEGIN
   INTO :new.kategoria_id
   FROM dual;
 END;
+/
 
 CREATE TABLE hozzaszolas(
     hozzaszolas_id INTEGER PRIMARY KEY,
@@ -110,6 +112,7 @@ BEGIN
   INTO :new.hozzaszolas_id
   FROM dual;
 END;
+/
 
 CREATE TABLE album_kep(
     album_id INTEGER NOT NULL,
