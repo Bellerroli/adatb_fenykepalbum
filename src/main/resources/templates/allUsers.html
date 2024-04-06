@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+</head>
+<body>
+    <div>
+        <div th:each="user: ${users}">
+            <p th:text="${user.toString()}"></p>
+        </div>
+    </div>
+</body>
+</html>
