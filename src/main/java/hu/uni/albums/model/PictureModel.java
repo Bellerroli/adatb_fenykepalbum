@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class PictureModel {
     private String email;
     private int pictureID;
-    private String title;
-    private String description;
+    private String pictureTitle;
+    private String pictureDescription;
     private double rating;
     private String uploadDate;
     private int placeID;
