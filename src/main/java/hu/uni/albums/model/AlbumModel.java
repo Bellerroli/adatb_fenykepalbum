@@ -11,5 +11,5 @@ public class AlbumModel {
     private int albumID;
     private String email;
     private String createDate;
-    private String title;
+    private String albumTitle;
 }
