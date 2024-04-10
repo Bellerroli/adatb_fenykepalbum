@@ -13,6 +13,7 @@ public class UserModel {
     private String nickname;
     private String fullName;
     private int placeID;
+    private boolean isAdmin;
 
     @Override
     public String toString(){

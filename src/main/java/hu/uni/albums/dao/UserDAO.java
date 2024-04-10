@@ -40,7 +40,7 @@ public class UserDAO{
         try{
             while(resultSet.next()){
                 returnList.add(new UserModel(resultSet.getString(1), resultSet.getString(3), resultSet.getString(4),
-                        resultSet.getString(2), resultSet.getInt(5)));
+                        resultSet.getString(2), resultSet.getInt(5), 0 != resultSet.getInt("is_admin")));
             }
         }catch(Exception ex){
             System.err.println(ex.getMessage());
