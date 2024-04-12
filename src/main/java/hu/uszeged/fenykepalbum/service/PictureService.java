@@ -20,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PictureService {
     private final String[] acceptedExtensions = {"png", "jpg", "jpeg"};
-    private final String IMG_ROOT = System.getProperty("user.dir")+"/uploads";
+    private final String IMG_ROOT = System.getProperty("user.dir")+"/src/main/resources/static/imgs";
     private final PictureRepository pictureRepository;
 
     public List<PictureModel> allPictures(){

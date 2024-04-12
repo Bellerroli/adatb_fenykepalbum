@@ -8,7 +8,7 @@
 Gallery
 
 <div th:each="picture : ${pictures}">
-    <img th:src="@{/uploads/(${picture.getFilepath()})}" alt="">
+    <img th:src="'imgs/'+(${picture.getFilepath()})" alt="">
 </div>
 </body>
 </html>

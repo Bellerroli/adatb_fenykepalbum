@@ -23,6 +23,7 @@ public class PictureController {
         try {
             if(pictureService.savePictureFile(pictureUploadModel))
                 pictureService.addNewPicture(pictureUploadModel);
+            else throw new Exception("Not supported picture format");
         }catch(Exception e){
             return "redirect:/gallery/pictureForm?msg=Upload+failed";
         }
