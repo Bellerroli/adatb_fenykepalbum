@@ -35,4 +35,10 @@ public class PictureController {
         model.addAttribute("places", placeService.allPlaces());
         return "image_upload";
     }
+
+    @GetMapping("/gallery")
+    public String gallery(Model model){
+        model.addAttribute("pictures", pictureService.allPictures());
+        return "gallery";
+    }
 }
