@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<form th:action="@{/registration}" th:object="${regmodel}" method="post">
+    <div><label> Email : <input type="text" th:field="*{email}"/> </label></div>
+    <div><label> Password: <input type="password" th:field="*{pwd}"/> </label></div>
+    <div><label> Full Name : <input type="text" th:field="*{fullName}"/> </label></div>
+    <div><label> Nickname : <input type="text" th:field="*{nickname}" name="nickname"/> </label></div>
+<!--    <div><label> Place : <input type="number" th:field="*{placeID}" name="placeID"/> </label></div>-->
+    Place:
+    <select name="place" th:field="*{placeID}">
+        <option th:each="place : ${places}" th:value="${place.getPlaceID()}" th:text="${place}"></option>
+    </select>
+    <div><input type="submit" value="Register"/></div>
+</form>
+</body>
+</html>

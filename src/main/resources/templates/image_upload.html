@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Upload</title>
+</head>
+
+<div th:if="${param.msg}">
+    <p th:text="${param.msg}"></p>
+</div>
+<body>
+<form th:action="@{/gallery/upload}" th:object="${uploadModel}" method="post" enctype="multipart/form-data">
+    Title: <input type="text" th:field="*{title}"><br>
+    Description: <textarea th:field="*{description}"></textarea><br>
+    Place: <select th:field="*{placeID}"><br>
+    <option th:each="place : ${places}" th:value="${place.getPlaceID()}" th:text="${place}"></option>
+    </select><br>
+    File: <input type="file" th:field="*{file}"><br>
+    <input type="submit" value="Upload">
+</form>
+</body>
+</html>
