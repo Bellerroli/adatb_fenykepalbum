@@ -31,7 +31,7 @@ public class PictureController {
     }
 
     @GetMapping("/gallery/pictureForm")
-    public String imageUploadForm(Model model, PictureUploadModel pictureUploadModel){
+    public String imageUploadForm(Model model){
         model.addAttribute("uploadModel", new PictureUploadModel());
         model.addAttribute("places", placeService.allPlaces());
         return "image_upload";
