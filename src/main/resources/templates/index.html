@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/nav.css"/>
     <title>Index</title>
 </head>
 <body>
+    <ul>
+        <li><a th:href="@{/}">index</a></li>
+        <li><a th:href="@{/gallery/pictureForm}">Képfeltöltés</a></li>
+        <li><a th:href="@{/place}">Helyszín generálás</a></li>
+    </ul>
+    <br>
 Index
 
 <div th:if="${param.error}">
@@ -12,5 +19,6 @@ Index
 </div>
 
 <a href="/logout">Logout</a>
+
 </body>
 </html>

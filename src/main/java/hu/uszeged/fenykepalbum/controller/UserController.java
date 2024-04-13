@@ -66,7 +66,7 @@ public class UserController {
             return "redirect:/registration?msg=Registration+failed";
         }
 
-        return "redirect:/registration?msg=Registration?successful";
+        return "redirect:/login?msg=Registration?successful";
     }
 
     @GetMapping("/asd")
