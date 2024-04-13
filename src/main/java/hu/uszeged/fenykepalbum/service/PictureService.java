@@ -20,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PictureService {
     private final String[] acceptedExtensions = {"png", "jpg", "jpeg"};
-    private final String IMG_ROOT = System.getProperty("user.dir")+"/src/main/resources/static/imgs";
+    private final String IMG_ROOT = System.getProperty("user.dir")+"\\src\\main\\resources\\static\\imgs";
     private final PictureRepository pictureRepository;
 
     public List<PictureModel> allPictures(){
@@ -44,7 +44,7 @@ public class PictureService {
     public boolean savePictureFile(PictureUploadModel pictureUploadModel) throws IOException {
         if(!isPictureFormat(pictureUploadModel)) return false;
         Date date = new Date();
-        String filename = SecurityContextHolder.getContext().getAuthentication().getName()+"_"+(date)+"."+fileExtension(pictureUploadModel);
+        String filename = SecurityContextHolder.getContext().getAuthentication().getName().split("@")[0]+"_"+(date)+"."+fileExtension(pictureUploadModel);
         Path filenameAndPath = Paths.get(IMG_ROOT, filename);
         Files.write(filenameAndPath, pictureUploadModel.getFile().getBytes());
         pictureUploadModel.setDate(date);

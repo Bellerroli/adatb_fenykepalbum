@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <title>Create Album</title>
 </head>
+<div th:if="${param.msg}">
+    <p th:text="${param.msg}"></p>
+</div>
 <body>
-<form action="album_create.html" method="post">
-    <div><label> Cím : <input type="text" th:field=""/> </label></div>
+<ul>
+    <li><a th:href="@{/}">index</a></li>
+    <li><a th:href="@{/gallery/pictureForm}">Képfeltöltés</a></li>
+    <li><a th:href="@{/places/newPlace}">Helyszín generálás</a></li>
+    <li><a th:href="@{/category}">Kategória létrehozás</a></li>
+    <li><a th:href="@{/gallery}"> Galéria </a> </li>
+    <li><a th:href="@{/Albums/album}">Album létrehozása</a></li>
+</ul>
+<br>
+<form th:action="@{/Albums/Upload}" th:object="${albumModel}" method="post">
+    Cím: <input type="text" th:field="*{title}"><br>
     <div><input type="submit" value="Create"/></div>
 </form>
 </body>

@@ -17,7 +17,7 @@ public class PlaceController {
     @GetMapping("places/newPlace")
     public String newPlace(Model model){
         model.addAttribute("placeModel", new PlaceUploadModel());
-        return "placeUpload";
+        return "place_create";
     }
 
     @PostMapping("/places/upload")
