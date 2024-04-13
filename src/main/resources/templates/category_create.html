@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Place Create</title>
+    <title>Title</title>
 </head>
 <div th:if="${param.msg}">
     <p th:text="${param.msg}"></p>
@@ -15,13 +15,11 @@
         <li><a th:href="@{/category}">Kategória létrehozás</a></li>
     </ul>
     <br>
+    <form th:action="@{/category}" th:object="${categoryModel}" method="post" enctype="multipart/form-data">
+        Megnevezés: <input type="text" th:field="*{designation}"><br>
+        Leírás: <textarea th:field="*{description}"></textarea><br>
+        <input type="submit" value="Create">
+    </form>
 
-<form th:action="@{/place}" th:object="${placeModel}" method="post" enctype="multipart/form-data">
-    Country: <input type="text" th:field="*{country}"><br>
-    County: <input type="text" th:field="*{county}"><br>
-    City: <input type="text" th:field="*{city}"><br>
-    Settlement: <input type="text" th:field="*{settlement}"><br>
-    <input type="submit" value="Create">
-</form>
 </body>
 </html>

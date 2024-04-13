@@ -1,13 +1,10 @@
 package hu.uszeged.fenykepalbum.service;
 
-import hu.uszeged.fenykepalbum.model.PictureModel;
-import hu.uszeged.fenykepalbum.model.PictureUploadModel;
 import hu.uszeged.fenykepalbum.model.PlaceModel;
-import hu.uszeged.fenykepalbum.model.PlaceUploadModel;
+import hu.uszeged.fenykepalbum.model.PlaceCreateModel;
 import hu.uszeged.fenykepalbum.repository.PlaceRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,20 +19,20 @@ public class PlaceService {
         return placeRepository.findAll();
     }
 
-    public boolean addNewPlace(PlaceUploadModel placeUploadModel){
+    public boolean addNewPlace(PlaceCreateModel placeCreateModel){
         PlaceModel placeModel = PlaceModel.builder()
-                .placeID(placeUploadModel.getPlaceid())
-                .country(placeUploadModel.getCountry())
-                .county(placeUploadModel.getCounty())
-                .city(placeUploadModel.getCity())
-                .settlement(placeUploadModel.getSettlement())
+                .placeID(placeCreateModel.getPlaceid())
+                .country(placeCreateModel.getCountry())
+                .county(placeCreateModel.getCounty())
+                .city(placeCreateModel.getCity())
+                .settlement(placeCreateModel.getSettlement())
                 .build();
         placeRepository.save(placeModel);
         return true;
     }
 
-    public boolean isSettlement(PlaceUploadModel placeUploadModel){
-        if (placeUploadModel.getSettlement() == null){
+    public boolean isSettlement(PlaceCreateModel placeCreateModel){
+        if (placeCreateModel.getSettlement() == null){
             return false;
         }
         return true;
