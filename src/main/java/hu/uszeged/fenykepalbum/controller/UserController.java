@@ -69,9 +69,4 @@ public class UserController {
         return "redirect:/login?msg=Registration?successful";
     }
 
-    @Secured("ROLE_ADMIN")
-    @GetMapping("/admin")
-    public String admin(){
-        return "admin";
-    }
 }

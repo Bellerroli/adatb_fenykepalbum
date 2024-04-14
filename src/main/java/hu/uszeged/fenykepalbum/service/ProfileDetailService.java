@@ -22,8 +22,8 @@ public class ProfileDetailService implements UserDetailsService {
         return loginUser;
     }
 
-    private String roleMapper(boolean isAdmin){
-        if(isAdmin) return "ADMIN";
-        return "USER";
+    private String[] roleMapper(boolean isAdmin){
+        if(isAdmin) return new String[]{"ADMIN", "USER"};
+        return new String[]{"USER"};
     }
 }
