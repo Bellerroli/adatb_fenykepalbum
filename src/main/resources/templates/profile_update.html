@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile | Update</title>
+</head>
+<body>
+<form th:action="@{/profile/update}" th:object="${userDetails}" method="post">
+    Email: <input type="text" th:field="*{email}" readonly><br>
+    Teljes név: <input type="text" th:field="*{fullName}"><br>
+    Nickname: <input type="text" th:field="*{nickname}" readonly><br>
+    Új jelszó: <input type="password" th:field="*{pwd}"><br>
+    Új jelszó újra: <input type="password" th:field="*{pwdAgain}"><br>
+    Lakhely: <select th:field="*{placeID}">
+    <option th:each="place: ${places}"  th:value="${place.getPlaceID()}" th:text="${place}"></option>
+</select>
+    <input type="submit" value="Módosít">
+</form>
+</body>
+</html>

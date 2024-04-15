@@ -2,15 +2,18 @@ package hu.uszeged.fenykepalbum.controller;
 
 import hu.uszeged.fenykepalbum.model.AuthModel;
 import hu.uszeged.fenykepalbum.model.RegistrationModel;
+import hu.uszeged.fenykepalbum.model.UserUpdateModel;
 import hu.uszeged.fenykepalbum.service.AuthService;
 import hu.uszeged.fenykepalbum.service.PlaceService;
 import hu.uszeged.fenykepalbum.service.RegistrationService;
+import hu.uszeged.fenykepalbum.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -26,6 +29,7 @@ public class UserController {
     private final AuthService authService;
     private final RegistrationService registrationService;
     private final PlaceService placeService;
+    private final UserService userService;
 
     @GetMapping(value = "/")
     public String indexPage() {
@@ -69,4 +73,18 @@ public class UserController {
         return "redirect:/login?msg=Registration?successful";
     }
 
+
+    @GetMapping("profile/update")
+    public String updateProfile(Model model){
+        model.addAttribute("userDetails", userService.
+                mapToUserUpdateModel(userService.userByID(SecurityContextHolder.getContext().getAuthentication().getName())));
+        model.addAttribute("places", placeService.allPlaces());
+        return "profile_update";
+    }
+
+    @PostMapping("profile/update")
+    public String processUpdateProfile(@ModelAttribute("userDetails")UserUpdateModel userUpdateModel){
+        userService.updateUser(userUpdateModel);
+        return "redirect:/profile/update";
+    }
 }
