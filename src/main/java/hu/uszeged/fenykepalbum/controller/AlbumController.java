@@ -1,7 +1,9 @@
 package hu.uszeged.fenykepalbum.controller;
 
 import hu.uszeged.fenykepalbum.model.AlbumCreateModel;
+import hu.uszeged.fenykepalbum.model.AlbumPictureModel;
 import hu.uszeged.fenykepalbum.model.PictureUploadModel;
+import hu.uszeged.fenykepalbum.service.AlbumPictureService;
 import hu.uszeged.fenykepalbum.service.AlbumService;
 import hu.uszeged.fenykepalbum.service.PictureService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @EnableMethodSecurity(securedEnabled = true)
 public class AlbumController {
     private final AlbumService albumService;
+    private final AlbumPictureService albumPictureService;
 
     @PostMapping("/Albums/Upload")
     public String albumCreate(@ModelAttribute("albumModel") AlbumCreateModel albumCreateModel){
@@ -32,6 +35,12 @@ public class AlbumController {
     public String saveNewAlbum(Model model){
         model.addAttribute("albumModel", new AlbumCreateModel());
         return "album_create";
+    }
+
+    @PostMapping("/albums/addPicture")
+    public String addPictureToAlbum(@ModelAttribute("model")AlbumPictureModel albumPictureModel){
+        albumPictureService.addPictureToAlbum(albumPictureModel);
+        return "redirect:/gallery/"+albumPictureModel.getPictureID();
     }
 
 }

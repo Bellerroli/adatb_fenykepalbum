@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,10 +27,18 @@ public class AlbumService {
     public boolean addNewAlbum(AlbumCreateModel albumCreateModel){
         AlbumModel albumModel = AlbumModel.builder()
                 .email(SecurityContextHolder.getContext().getAuthentication().getName())
-                .createDate(albumCreateModel.getDate())
+                .createDate(new Date())
                 .title(albumCreateModel.getTitle())
                 .build();
         albumRepository.save(albumModel);
         return true;
+    }
+
+    public List<AlbumModel> userAlbumModels(){
+        List<AlbumModel> al = new ArrayList<>();
+        for(AlbumModel am: albumRepository.findAll()){
+            if(am.getEmail().equals(SecurityContextHolder.getContext().getAuthentication().getName())) al.add(am);
+        }
+        return al;
     }
 }

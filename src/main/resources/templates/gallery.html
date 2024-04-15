@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Gallery</title>
 </head>
+
+<style>
+    a{
+        display: block;
+    }
+</style>
 <body>
 
 <ul>
@@ -18,8 +24,11 @@
 
 Gallery
 
-<div th:each="picture : ${pictures}">
-    <a th:href="'/gallery/'+(${picture.getPictureID()})"><img th:src="'/imgs/'+(${picture.getFilepath()})" alt=""></a>
+<div id="wrapper">
+    <div th:each="picture : ${pictures}" >
+        <a th:href="'/gallery/'+(${picture.getPictureID()})"><img th:src="'/imgs/'+(${picture.getFilepath()})" alt=""></a>
+    </div>
 </div>
+
 </body>
 </html>

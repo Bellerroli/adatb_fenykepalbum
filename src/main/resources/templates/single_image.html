@@ -12,6 +12,16 @@
 </div>
 <br>
 
+<div>
+    <form th:action="@{/albums/addPicture}" th:object="${albumPicture}" method="post">
+        <input type="hidden" th:value="${picture.getPictureID()}" th:attr="name='pictureID'">
+        <select th:field="*{albumID}">
+            <option th:each="album: ${albums}" th:value="${album.getAlbumID()}" th:text="${album.getTitle()}"></option>
+        </select>
+        <input type="submit" value="Kép felvétele az albumba">
+    </form>
+</div>
+
 <div class="comments">
     <span th:each="comment: ${comments}">
         <p th:text="${comment.getEmail()}"></p>
