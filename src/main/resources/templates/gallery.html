@@ -19,7 +19,7 @@
 Gallery
 
 <div th:each="picture : ${pictures}">
-    <img th:src="'imgs/'+(${picture.getFilepath()})" alt="">
+    <a th:href="'/gallery/'+(${picture.getPictureID()})"><img th:src="'/imgs/'+(${picture.getFilepath()})" alt=""></a>
 </div>
 </body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fényképnézegető</title>
+</head>
+<body>
+<div>
+    <img th:src="'/imgs/'+(${picture.getFilepath()})" alt=""><br>
+    <span th:text="${picture.getPictureTitle()}"></span><br>
+    <span th:text="${picture.getPictureDescription()}"></span><br>
+</div>
+<br>
+
+<div class="comments">
+    <span th:each="comment: ${comments}">
+        <p th:text="${comment.getEmail()}"></p>
+        <p th:text="${comment.getContent()}"></p>
+        <p th:text="${comment.getTimeStamp()}"></p>
+    </span>
+</div>
+<form th:action="@{/comment/save}" th:object="${newComment}" method="post">
+    <input type="hidden" th:value="${picture.getPictureID()}" th:attr="name='pictureID'">
+    <input type="text" th:field="*{content}">
+    <input type="submit" value="Küld">
+</form>
+</body>
+</html>
