@@ -2,21 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
     <title>Title</title>
 </head>
 <div th:if="${param.msg}">
     <p th:text="${param.msg}"></p>
 </div>
-<body>
+<nav>
     <ul>
-        <li><a th:href="@{/}">index</a></li>
-        <li><a th:href="@{/gallery/pictureForm}">Képfeltöltés</a></li>
-        <li><a th:href="@{/places/newPlace}">Helyszín generálás</a></li>
-        <li><a th:href="@{/category/Upload}">Kategória létrehozás</a></li>
-        <li><a th:href="@{/gallery}"> Galéria </a> </li>
+        <li><a th:href="@{/}">Kezdőlap</a></li>
+        <ul class="dropdown">
+            <li><a th:href="@{/gallery}" class="drop">Galéria</a>
+                <ul class="dropdown-content">
+                    <li><a th:href="@{/gallery/pictureForm}">Kép feltöltés</a></li>
+                </ul>
+            </li>
+        </ul>
+        <li><a th:href="@{/places/newPlace}">Helyszín létrehozása</a></li>
+        <li><a th:href="@{/category/Upload}">Kategória létrehozása</a></li>
         <li><a th:href="@{/Albums/album}">Album létrehozása</a></li>
+        <li><a th:href="@{/profile/update}">Profil módosítása</a></li>
+        <li><a href="/logout">Kijelentkezés</a></li>
     </ul>
+</nav>
     <br>
+    <h1>Kategória létrehozása</h1>
     <form th:action="@{/category/Upload}" th:object="${categoryModel}" method="post" enctype="multipart/form-data">
         Megnevezés: <input type="text" th:field="*{designation}"><br>
         Leírás: <textarea th:field="*{description}"></textarea><br>
