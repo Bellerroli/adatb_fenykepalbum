@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
     <title>Title</title>
 </head>
 <div th:if="${param.msg}">
@@ -27,11 +28,12 @@
 </nav>
     <br>
     <h1>Kategória létrehozása</h1>
+    <div class="container">
     <form th:action="@{/category/Upload}" th:object="${categoryModel}" method="post" enctype="multipart/form-data">
         Megnevezés: <input type="text" th:field="*{designation}"><br>
         Leírás: <textarea th:field="*{description}"></textarea><br>
         <input type="submit" value="Create">
     </form>
-
+    </div>
 </body>
 </html>

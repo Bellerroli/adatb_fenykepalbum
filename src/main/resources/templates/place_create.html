@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
     <title>Place Create</title>
 </head>
 <div th:if="${param.msg}">
@@ -27,6 +28,8 @@
 </nav>
     <br>
 <h1>Helyszín létrehozása</h1>
+
+<div class="container">
 <form th:action="@{/places/upload}" th:object="${placeModel}" method="post" enctype="multipart/form-data">
     Ország: <input type="text" th:field="*{country}"><br>
     Megye: <input type="text" th:field="*{county}"><br>
@@ -34,5 +37,6 @@
     Település: <input type="text" th:field="*{settlement}"><br>
     <input type="submit" value="Create">
 </form>
+</div>
 </body>
 </html>

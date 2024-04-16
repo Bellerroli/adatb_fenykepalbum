@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Image Upload</title>
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
 </head>
 
 <div th:if="${param.msg}">
@@ -30,14 +31,24 @@
     <br>
 
 <h1>Kép feltöltés</h1>
+<div class="container">
     <form th:action="@{/gallery/upload}" th:object="${uploadModel}" method="post" enctype="multipart/form-data">
-        Cím: <input type="text" th:field="*{title}"><br>
-        Leírás: <textarea th:field="*{description}"></textarea><br>
-        Helyszín: <select th:field="*{placeID}"><br>
-        <option th:each="place : ${places}" th:value="${place.getPlaceID()}" th:text="${place}"></option>
-        </select><br>
-        <input type="file" th:field="*{file}"><br>
-        <input type="submit" value="Upload">
+        <label for="title">Cím:</label>
+        <input type="text" id="title" th:field="*{title}">
+
+        <label for="description">Leírás:</label>
+        <textarea id="description" th:field="*{description}"></textarea>
+
+        <label for="placeID">Helyszín:</label>
+        <select id="placeID" th:field="*{placeID}">
+            <option th:each="place : ${places}" th:value="${place.getPlaceID()}" th:text="${place}"></option>
+        </select>
+
+        <label for="file">Fájl kiválasztása:</label>
+        <input type="file" id="file" th:field="*{file}">
+
+        <input type="submit" value="Feltöltés">
     </form>
+</div>
 </body>
 </html>

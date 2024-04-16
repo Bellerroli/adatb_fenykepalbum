@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
     <title>Create Album</title>
 </head>
 <div th:if="${param.msg}">
@@ -29,9 +30,12 @@
 <br>
 
 <h1>Album létrehozása</h1>
+
+<div class="container">
 <form th:action="@{/Albums/Upload}" th:object="${albumModel}" method="post">
     Cím: <input type="text" th:field="*{title}"><br>
     <div><input type="submit" value="Create"/></div>
 </form>
+</div>
 </body>
 </html>
