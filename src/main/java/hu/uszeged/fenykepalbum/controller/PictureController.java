@@ -1,14 +1,13 @@
 package hu.uszeged.fenykepalbum.controller;
 
 import hu.uszeged.fenykepalbum.model.AlbumPictureModel;
+import hu.uszeged.fenykepalbum.model.CategoryPictureUploadModel;
 import hu.uszeged.fenykepalbum.model.CommentModel;
 import hu.uszeged.fenykepalbum.model.PictureUploadModel;
-import hu.uszeged.fenykepalbum.service.AlbumService;
-import hu.uszeged.fenykepalbum.service.CommentService;
-import hu.uszeged.fenykepalbum.service.PictureService;
-import hu.uszeged.fenykepalbum.service.PlaceService;
+import hu.uszeged.fenykepalbum.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +23,7 @@ public class PictureController {
     private final PictureService pictureService;
     private final CommentService commentService;
     private final AlbumService albumService;
+    private final CategoryService categoryService;
 
     @PostMapping("/gallery/upload")
     public String imageUpload(@ModelAttribute("uploadModel") PictureUploadModel pictureUploadModel){
@@ -57,6 +57,10 @@ public class PictureController {
         model.addAttribute("albumPicture", new AlbumPictureModel());
         model.addAttribute("comments", commentService.commentsByPictureiD((long) id));
         model.addAttribute("newComment", new CommentModel());
+        model.addAttribute("categories", categoryService.allCategories());
+        model.addAttribute("authusername", SecurityContextHolder.getContext()
+                .getAuthentication().getName());
+        model.addAttribute("categoryPicture", new CategoryPictureUploadModel());
         return "single_image";
     }
 }
