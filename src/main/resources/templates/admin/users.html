@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
     <title>Admin | Users</title>
 </head>
 <body>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Felhasználói főoldal</a></li>
+        <li><a th:href="@{/admin/users}">Felhasználókezelés</a></li>
+        <li><a th:href="@{/admin/pictures}">Fényképkezelés</a></li>
+        <li><a th:href="@{/admin/albums}">Albumkezelés</a></li>
+        <li><a th:href="@{/admin/categories}">Kategóriakezelés</a></li>
+        <li><a th:href="@{/admin/places}">Helykezelés</a></li>
+    </ul>
+</nav>
+
 <table>
     <tr>
         <th>Teljes Név</th>
@@ -42,7 +55,7 @@
         </form>
         <td>
             <a th:href="@{/admin/users/delete(id=${user.getEmail()})}">Törlés</a>
-        </td>   
+        </td>
     </tr>
 </table>
 </body>
