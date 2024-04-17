@@ -43,7 +43,7 @@ public class UserController {
         } catch (Exception e) {
             return "redirect:login?msg=Invalid credentials";
         }
-        return "redirect:/";
+        return "redirect:/?msg=Welcome!";
     }
 
     @GetMapping("/login")

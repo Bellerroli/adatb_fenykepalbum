@@ -24,9 +24,15 @@
         </ul>
     </nav>
     <br><br><br>
+
+
 <div th:if="${param.error}">
     <p th:text="${param.error}"></p>
 </div>
+
+    <div th:if="${param.msg}">
+        <p th:text="${param.msg}"></p>
+    </div>
     <div>
         <h1>Kezdőlap</h1>
     </div>
