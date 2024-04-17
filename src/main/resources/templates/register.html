@@ -3,19 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <style>
+        .log_reg-design {
+            max-width: 500px;
+            margin: 0;
+            padding: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .log_reg-design form div {
+            margin-bottom: 15px;
+        }
+
+        .log_reg-design label {
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .log_reg-design input[type="text"], input[type="password"]{
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .log_reg-design select{
+            width: 80%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .log_reg-design input[type="submit"] {
+            width: 75%;
+            padding: 10px;
+            background-color: #426aff;
+            margin-top: 10px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .log_reg-design input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .log_reg-design a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #007BFF;
+            margin-top: 15px;
+        }
+
+        .log_reg-design a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<form th:action="@{/registration}" th:object="${regmodel}" method="post">
-    <div><label> Email : <input type="text" th:field="*{email}"/> </label></div>
-    <div><label> Password: <input type="password" th:field="*{pwd}"/> </label></div>
-    <div><label> Full Name : <input type="text" th:field="*{fullName}"/> </label></div>
-    <div><label> Nickname : <input type="text" th:field="*{nickname}" name="nickname"/> </label></div>
-<!--    <div><label> Place : <input type="number" th:field="*{placeID}" name="placeID"/> </label></div>-->
-    Place:
-    <select name="place" th:field="*{placeID}">
-        <option th:each="place : ${places}" th:value="${place.getPlaceID()}" th:text="${place}"></option>
-    </select>
-    <div><input type="submit" value="Register"/></div>
-</form>
+<div class="log_reg-design">
+    <form th:action="@{/registration}" th:object="${regmodel}" method="post">
+        <label for="email"> Email: </label>
+        <input type="text" id="email" th:field="*{email}"/>
+        <label for="password"> Jelszó: </label>
+        <input type="password" id="password" th:field="*{pwd}"/>
+        <label for="fullname"> Teljes név: </label>
+        <input type="text" id="fullname" th:field="*{fullName}"/>
+        <label for="nickname"> Nickname: </label>
+            <input type="text" id="nickname" th:field="*{nickname}" name="nickname"/>
+    <!--    <div><label> Place : <input type="number" th:field="*{placeID}" name="placeID"/> </label></div>-->
+        <label for="place"> Helyszín: </label>
+        <select name="place" id="place" th:field="*{placeID}">
+            <option th:each="place : ${places}" th:value="${place.getPlaceID()}" th:text="${place}"></option>
+        </select>
+        <input type="submit" value="Regisztráció"/>
+    </form>
+</div>
 </body>
 </html>
