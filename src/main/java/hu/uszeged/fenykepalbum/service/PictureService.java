@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -68,5 +69,15 @@ public class PictureService {
 
     public PictureModel pictureById(int id){
         return pictureRepository.findById(id).orElseThrow();
+    }
+
+    public boolean deletePicture(int id){
+        File file = new File(IMG_ROOT+"/"+pictureById(id).getFilepath());
+        if(file.delete()){
+            pictureRepository.deleteById(id);
+            return true;
+        }
+
+        return false;
     }
 }

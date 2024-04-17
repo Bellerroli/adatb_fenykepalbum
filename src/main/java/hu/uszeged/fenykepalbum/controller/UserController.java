@@ -41,7 +41,7 @@ public class UserController {
         try {
             String userPrincipal = authService.authenticate(authModel);
         } catch (Exception e) {
-            return "redirect:login";
+            return "redirect:login?msg=Invalid credentials";
         }
         return "redirect:/";
     }
@@ -70,7 +70,7 @@ public class UserController {
             return "redirect:/registration?msg=Registration+failed";
         }
 
-        return "redirect:/login?msg=Registration?successful";
+        return "redirect:/login?msg=Registration+successful";
     }
 
 

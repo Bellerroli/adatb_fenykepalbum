@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Képkezelés</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Cím</th>
+        <th>Leírás</th>
+        <th>Felhasználó</th>
+        <th>Fájlnév</th>
+        <th>Törlés</th>
+    </tr>
+    <tr th:each="picture: ${pictures}">
+        <td th:text="${picture.getPictureTitle()}"></td>
+        <td th:text="${picture.getPictureDescription()}"></td>
+        <td th:text="${picture.getEmail()}"></td>
+        <td th:text="${picture.getFilepath()}"></td>
+        <td><a th:href="'/admin/pictures/delete/'+${picture.getPictureID()}">Törlés</a></td>
+    </tr>
+</table>
+</body>
+</html>

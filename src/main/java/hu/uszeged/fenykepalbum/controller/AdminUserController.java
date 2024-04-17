@@ -1,6 +1,7 @@
 package hu.uszeged.fenykepalbum.controller;
 
 import hu.uszeged.fenykepalbum.model.UserModel;
+import hu.uszeged.fenykepalbum.service.PictureService;
 import hu.uszeged.fenykepalbum.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @EnableMethodSecurity(securedEnabled = true)
 public class AdminUserController {
     private final UserService userService;
+    private final PictureService pictureService;
     @Secured("ROLE_ADMIN")
     @GetMapping("/admin")
     public String admin(){
@@ -39,5 +41,19 @@ public class AdminUserController {
     public String deleteUser(@RequestParam(name = "id") String id){
         userService.deleteUser(id);
         return "redirect:/admin/users";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/pictures")
+    public String adminPictureList(Model model){
+        model.addAttribute("pictures", pictureService.allPictures());
+        return "/admin/pictures";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/pictures/delete/{id}")
+    public String adminDeletePicture(@PathVariable("id") int id ){
+        pictureService.deletePicture(id);
+        return "redirect:/admin/pictures";
     }
 }
