@@ -1,8 +1,7 @@
 package hu.uszeged.fenykepalbum.controller;
 
 import hu.uszeged.fenykepalbum.model.UserModel;
-import hu.uszeged.fenykepalbum.service.PictureService;
-import hu.uszeged.fenykepalbum.service.UserService;
+import hu.uszeged.fenykepalbum.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -16,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 public class AdminUserController {
     private final UserService userService;
     private final PictureService pictureService;
+    private final AlbumService albumService;
+    private final CategoryService categoryService;
+    private final PlaceService placeService;
     @Secured("ROLE_ADMIN")
     @GetMapping("/admin")
     public String admin(){
@@ -44,6 +46,27 @@ public class AdminUserController {
     }
 
     @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/albums")
+    public String adminAlbumList(Model model){
+        model.addAttribute("albums", albumService.allAlbums());
+        return "/admin/albums";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/categories")
+    public String adminCategoryList(Model model){
+        model.addAttribute("categories", categoryService.allCategories());
+        return "/admin/categories";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/places")
+    public String adminPlaceList(Model model){
+        model.addAttribute("places", placeService.allPlaces());
+        return "/admin/places";
+    }
+
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/pictures")
     public String adminPictureList(Model model){
         model.addAttribute("pictures", pictureService.allPictures());
@@ -55,5 +78,26 @@ public class AdminUserController {
     public String adminDeletePicture(@PathVariable("id") int id ){
         pictureService.deletePicture(id);
         return "redirect:/admin/pictures";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/albums/delete/{id}")
+    public String adminDeleteAlbum(@PathVariable("id") int id){
+        albumService.deleteAlbum(id);
+        return "redirect:/admin/albums";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/categories/delete/{id}")
+    public String adminDeleteCategory(@PathVariable("id") int id){
+        categoryService.deleteCategory(id);
+        return "redirect:/admin/categories";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/places/delete/{id}")
+    public String adminDeletePlace(@PathVariable("id") int id){
+        placeService.deletePlace(id);
+        return "redirect:/admin/places";
     }
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Albumkezelés</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Cím</th>
+        <th>Felhasználó</th>
+        <th>Törlés</th>
+    </tr>
+    <tr th:each="album: ${albums}">
+        <td th:text="${album.getTitle()}"></td>
+        <td th:text="${album.getEmail()}"></td>
+        <td><a th:href="'/admin/albums/delete/'+${album.getAlbumID()}">Törlés</a></td>
+    </tr>
+</table>
+</body>
+</html>

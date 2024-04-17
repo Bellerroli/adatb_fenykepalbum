@@ -31,4 +31,8 @@ public class CategoryService {
         categoryRepository.save(categoryModel);
         return true;
     }
+
+    public void deleteCategory(int id){
+        categoryRepository.deleteById(id);
+    }
 }

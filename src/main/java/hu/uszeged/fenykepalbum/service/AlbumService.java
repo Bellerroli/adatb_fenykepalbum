@@ -20,7 +20,7 @@ import java.util.List;
 public class AlbumService {
     private final AlbumRepository albumRepository;
 
-    public List<AlbumModel> albumModels(){
+    public List<AlbumModel> allAlbums(){
         return albumRepository.findAll();
     }
 
@@ -40,5 +40,9 @@ public class AlbumService {
             if(am.getEmail().equals(SecurityContextHolder.getContext().getAuthentication().getName())) al.add(am);
         }
         return al;
+    }
+
+    public void deleteAlbum(int id){
+        albumRepository.deleteById(id);
     }
 }

@@ -29,4 +29,8 @@ public class PlaceService {
         placeRepository.save(placeModel);
         return "OK";
     }
+
+    public void deletePlace(int id){
+        placeRepository.deleteById(id);
+    }
 }

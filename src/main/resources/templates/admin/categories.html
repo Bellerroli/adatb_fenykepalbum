@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Kategóriakezelés</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Cím</th>
+        <th>Leírás</th>
+        <th>Törlés</th>
+    </tr>
+    <tr th:each="category: ${categories}">
+        <td th:text="${category.getCategoryDesignation()}"></td>
+        <td th:text="${category.getCategoryDescription()}"></td>
+        <td><a th:href="'/admin/categories/delete/'+${category.getCategoryID()}">Törlés</a></td>
+    </tr>
+</table>
+</body>
+</html>

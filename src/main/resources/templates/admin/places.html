@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Helykezelés</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Ország</th>
+        <th>Megye</th>
+        <th>Város</th>
+        <th>Település</th>
+        <th>Törlés</th>
+    </tr>
+    <tr th:each="place: ${places}">
+        <td th:text="${place.getCountry()}"></td>
+        <td th:text="${place.getCounty()}"></td>
+        <td th:text="${place.getCity()}"></td>
+        <td th:text="${place.getSettlement()}"></td>
+        <td><a th:href="'/admin/places/delete/'+${place.getPlaceID()}">Törlés</a></td>
+    </tr>
+</table>
+</body>
+</html>
