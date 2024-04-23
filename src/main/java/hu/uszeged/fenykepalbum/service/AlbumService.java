@@ -45,4 +45,12 @@ public class AlbumService {
     public void deleteAlbum(int id){
         albumRepository.deleteById(id);
     }
+
+    public List<AlbumModel> loggedInUserAlbums(){
+        return albumRepository.findAlbumsByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+    }
+
+    public AlbumModel albumById(int id){
+        return albumRepository.findById(id).orElseThrow();
+    }
 }

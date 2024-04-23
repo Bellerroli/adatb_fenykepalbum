@@ -2,16 +2,15 @@ package hu.uszeged.fenykepalbum.controller;
 
 import hu.uszeged.fenykepalbum.model.AlbumCreateModel;
 import hu.uszeged.fenykepalbum.model.AlbumPictureModel;
-import hu.uszeged.fenykepalbum.model.PictureUploadModel;
 import hu.uszeged.fenykepalbum.service.AlbumPictureService;
 import hu.uszeged.fenykepalbum.service.AlbumService;
-import hu.uszeged.fenykepalbum.service.PictureService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -43,4 +42,32 @@ public class AlbumController {
         return "redirect:/gallery/"+albumPictureModel.getPictureID();
     }
 
+    @GetMapping("/user/albums")
+    public String userAlbums(Model model){
+        try{
+            model.addAttribute("userAlbums", albumService.loggedInUserAlbums());
+        }catch (Exception e){
+            return "redirect:/error";
+        }
+
+        return "user/albums";
+    }
+
+    @GetMapping("/user/album/{id}")
+    public String singleAlbum(@PathVariable("id") int id, Model model){
+        model.addAttribute("albumDetails", albumService.albumById(id));
+        model.addAttribute("albumPictures", albumPictureService.albumPicturesByAlbumID(id));
+        model.addAttribute("pictureToRemove", new AlbumPictureModel());
+        return "single_album";
+    }
+
+    @PostMapping("/album/picture/delete")
+    public String removePictureFromAlbum(@ModelAttribute("pictureToRemove")AlbumPictureModel albumPictureModel){
+        try{
+            albumPictureService.removePictureFromAlbum(albumPictureModel.getAlbumID(), albumPictureModel.getPictureID());
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return "redirect:/user/album/"+albumPictureModel.getAlbumID();
+    }
 }

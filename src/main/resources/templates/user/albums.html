@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <title>Albumjaim</title>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Kezdőlap</a></li>
+        <ul class="dropdown">
+            <li><a th:href="@{/gallery}" class="drop">Galéria</a>
+                <ul class="dropdown-content">
+                    <li><a th:href="@{/gallery/pictureForm}">Kép feltöltés</a></li>
+                </ul>
+            </li>
+        </ul>
+        <li><a th:href="@{/places/newPlace}">Helyszín létrehozása</a></li>
+        <li><a th:href="@{/category/Upload}">Kategória létrehozása</a></li>
+        <ul class="dropdown">
+            <li><a th:href="@{/user/albums}" class="drop">Albumjaim</a>
+                <ul class="dropdown-content">
+                    <li><a th:href="@{/Albums/album}">Album létrehozása</a></li>
+                </ul>
+            </li>
+        </ul>
+        <li><a th:href="@{/profile/update}">Profil módosítása</a></li>
+        <li><a href="/logout">Kijelentkezés</a></li>
+        <li><a href="/login">Bejelentkezés</a></li>
+    </ul>
+</nav>
+
+<table>
+    <tr>
+        <th>Albumnév</th>
+        <th>Létrehozás dátuma</th>
+<!--        <th>Módosít</th>-->
+<!--        <th>Törlés</th>-->
+    </tr>
+    <tr th:each="album: ${userAlbums}">
+        <td><a th:href="'/user/album/'+${album.getAlbumID()}" th:text="${album.getTitle()}"></a></td>
+        <td th:text="${album.getCreateDate()}"></td>
+    </tr>
+</table>
+</body>
+</html>

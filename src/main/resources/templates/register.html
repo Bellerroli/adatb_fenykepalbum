@@ -66,6 +66,7 @@
     </style>
 </head>
 <body>
+<nav th:insert="nav.html"></nav>
 <div class="log_reg-design">
     <form th:action="@{/registration}" th:object="${regmodel}" method="post">
         <label for="email"> Email: </label>

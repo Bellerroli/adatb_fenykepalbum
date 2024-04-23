@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/image_gallery.css">
     <title>Gallery</title>
 </head>
 
@@ -12,30 +13,16 @@
     }
 </style>
 <body>
-<nav>
-    <ul>
-        <li><a th:href="@{/}">Kezdőlap</a></li>
-        <ul class="dropdown">
-            <li><a th:href="@{/gallery}" class="drop">Galéria</a>
-                <ul class="dropdown-content">
-                    <li><a th:href="@{/gallery/pictureForm}">Kép feltöltés</a></li>
-                </ul>
-            </li>
-        </ul>
-        <li><a th:href="@{/places/newPlace}">Helyszín létrehozása</a></li>
-        <li><a th:href="@{/category/Upload}">Kategória létrehozása</a></li>
-        <li><a th:href="@{/Albums/album}">Album létrehozása</a></li>
-        <li><a th:href="@{/profile/update}">Profil módosítása</a></li>
-        <li><a href="/logout">Kijelentkezés</a></li>
-    </ul>
-</nav>
+<nav th:insert="nav.html"></nav>
 <br>
 
 <h1>Galéria</h1>
 
 <div id="wrapper">
-    <div th:each="picture : ${pictures}" >
-        <a th:href="'/gallery/'+(${picture.getPictureID()})"><img th:src="'/imgs/'+(${picture.getFilepath()})" alt=""></a>
+    <div th:each="picture : ${pictures}" class="picture">
+        <a th:href="'/gallery/'+(${picture.getPictureID()})">
+            <img th:src="'/imgs/'+(${picture.getFilepath()})" th:alt="${picture.getPictureTitle()}">
+        </a>
     </div>
 </div>
 

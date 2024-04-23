@@ -1,0 +1,24 @@
+<nav>
+  <ul>
+    <li><a th:href="@{/}">Kezdőlap</a></li>
+    <ul class="dropdown">
+      <li><a th:href="@{/gallery}" class="drop">Galéria</a>
+        <ul class="dropdown-content">
+          <li><a th:href="@{/gallery/pictureForm}">Kép feltöltés</a></li>
+        </ul>
+      </li>
+    </ul>
+    <li><a th:href="@{/places/newPlace}">Helyszín létrehozása</a></li>
+    <li><a th:href="@{/category/Upload}">Kategória létrehozása</a></li>
+    <ul class="dropdown">
+      <li><a th:href="@{/user/albums}" class="drop">Albumjaim</a>
+        <ul class="dropdown-content">
+          <li><a th:href="@{/Albums/album}">Album létrehozása</a></li>
+        </ul>
+      </li>
+    </ul>
+    <li><a th:href="@{/profile/update}">Profil módosítása</a></li>
+    <li><a href="/logout">Kijelentkezés</a></li>
+    <li><a href="/login">Bejelentkezés</a></li>
+  </ul>
+</nav>

@@ -67,7 +67,7 @@ public class UserController {
         try{
             regResponse = registrationService.register(registrationModel);
         }catch(Exception e){
-            return "redirect:/registration?msg=Registration+failed";
+            return "redirect:/registration?msg=Registration+failed(email or nickname taken)";
         }
 
         return "redirect:/login?msg=Registration+successful";
@@ -86,5 +86,11 @@ public class UserController {
     public String processUpdateProfile(@ModelAttribute("userDetails")UserUpdateModel userUpdateModel){
         userService.updateUser(userUpdateModel);
         return "redirect:/profile/update";
+    }
+
+    @GetMapping("/error")
+    @ResponseBody
+    public String error(){
+        return "<h1>Hiba a művelet során</h1>";
     }
 }

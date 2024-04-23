@@ -59,7 +59,8 @@
     </style>
 </head>
 <body>
-
+<nav th:insert="nav.html"></nav>
+<br>
 <div th:if="${param.msg}">
     <p th:text="${param.msg}"></p>
 </div>

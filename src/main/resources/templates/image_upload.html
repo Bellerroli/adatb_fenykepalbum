@@ -11,23 +11,7 @@
     <p th:text="${param.msg}"></p>
 </div>
 <body>
-<nav>
-    <ul>
-        <li><a th:href="@{/}">Kezdőlap</a></li>
-        <ul class="dropdown">
-            <li><a th:href="@{/gallery}" class="drop">Galéria</a>
-                <ul class="dropdown-content">
-                    <li><a th:href="@{/gallery/pictureForm}">Kép feltöltés</a></li>
-                </ul>
-            </li>
-        </ul>
-        <li><a th:href="@{/places/newPlace}">Helyszín létrehozása</a></li>
-        <li><a th:href="@{/category/Upload}">Kategória létrehozása</a></li>
-        <li><a th:href="@{/Albums/album}">Album létrehozása</a></li>
-        <li><a th:href="@{/profile/update}">Profil módosítása</a></li>
-        <li><a href="/logout">Kijelentkezés</a></li>
-    </ul>
-</nav>
+<nav th:insert="nav.html"></nav>
     <br>
 
 <h1>Kép feltöltés</h1>

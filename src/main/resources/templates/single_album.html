@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/image_gallery.css">
+    <title>Albumnézet</title>
+</head>
+<body>
+
+<nav th:insert="nav.html"></nav>
+
+<h1 th:text="${albumDetails.getTitle()}"></h1>
+
+<div id="wrapper">
+    <div class="picture" th:each="picture: ${albumPictures}">
+        <a th:href="'/gallery/'+${picture.getPictureID()}" style="display: block">
+            <img th:src="'/imgs/'+${picture.getFilePath()}" th:alt="${picture.getTitle()}"><br>
+            <form th:action="@{/album/picture/delete}" th:object="${pictureToRemove}" method="post">
+                <input type="hidden" th:value="${picture.getPictureID()}" th:attr="name='pictureID'">
+                <input type="hidden" th:value="${albumDetails.getAlbumID()}" th:attr="name='albumID'">
+                <input type="submit" value="Fénykép törlése az albumból">
+            </form>
+        </a>
+    </div>
+</div>
+</body>
+</html>

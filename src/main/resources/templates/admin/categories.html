@@ -6,16 +6,7 @@
     <title>Admin | Kategóriakezelés</title>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a th:href="@{/}">Felhasználói főoldal</a></li>
-        <li><a th:href="@{/admin/users}">Felhasználókezelés</a></li>
-        <li><a th:href="@{/admin/pictures}">Fényképkezelés</a></li>
-        <li><a th:href="@{/admin/albums}">Albumkezelés</a></li>
-        <li><a th:href="@{/admin/categories}">Kategóriakezelés</a></li>
-        <li><a th:href="@{/admin/places}">Helykezelés</a></li>
-    </ul>
-</nav>
+<nav th:insert="admin_nav.html"></nav>
 
 <table>
     <tr>
