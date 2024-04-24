@@ -46,6 +46,8 @@
            th:href="@{/category/picture/remove(catid=${categ.getCategoryID()}, pictureid=${picture.getPictureID()})}"></a>
         <p th:if="${!isPictureUserPicture}" th:text="' '+${categ.getCategoryDesignation()}"></p>
     </div>
+    <br>
+    <div th:text="'Készült: '+${picturePlace}"></div>
 </div>
 <br>
 
@@ -75,6 +77,7 @@
         <p th:text="${comment.getEmail()}"></p>
         <p th:text="${comment.getContent()}"></p>
         <p th:text="${comment.getTimeStamp()}"></p>
+        <a th:if="${isUserAdmin}" th:href="'/comments/delete/'+${comment.getId()}">Komment törlése</a>
     </div>
 </div>
 <div class="content">

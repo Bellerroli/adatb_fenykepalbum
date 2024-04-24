@@ -28,14 +28,18 @@ public class CommentService {
         return ret;
     }
 
+    public CommentModel commentByID(int id){
+        return commentRepository.findById((long) id).orElseThrow();
+    }
+
+    public void deleteComment(int id){
+        commentRepository.deleteById((long) id);
+    }
+
     public void newComment(CommentModel cm){
         if(cm.getContent().isEmpty()) return;
         cm.setTimeStamp(new Date());
         cm.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         commentRepository.save(cm);
-    }
-
-    public void deleteComment(Long id){
-        commentRepository.deleteById(id);
     }
 }

@@ -1,5 +1,6 @@
 package hu.uszeged.fenykepalbum.service;
 
+import hu.uszeged.fenykepalbum.dto.PictureDataWithPlace;
 import hu.uszeged.fenykepalbum.model.PictureModel;
 import hu.uszeged.fenykepalbum.model.PictureUploadModel;
 import hu.uszeged.fenykepalbum.repository.PictureRepository;
@@ -69,6 +70,10 @@ public class PictureService {
 
     public PictureModel pictureById(int id){
         return pictureRepository.findById(id).orElseThrow();
+    }
+
+    public PictureDataWithPlace pictureByIdWithPlace(int id){
+        return pictureRepository.findByIdWithPlace(id);
     }
 
     public boolean deletePicture(int id){

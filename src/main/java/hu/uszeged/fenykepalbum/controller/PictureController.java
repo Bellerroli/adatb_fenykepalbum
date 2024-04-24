@@ -62,6 +62,8 @@ public class PictureController {
                 .getAuthentication().getName().equals(pictureService.pictureById(id).getEmail()));
         model.addAttribute("categoryPicture", new CategoryPictureUploadModel());
         model.addAttribute("currCategories", categoryService.categoriesOfPicture(id));
+        model.addAttribute("isUserAdmin", SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN")));
+        model.addAttribute("picturePlace", placeService.placeById(pictureService.pictureById(id).getPlaceID()));
         return "single_image";
     }
 

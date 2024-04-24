@@ -33,4 +33,8 @@ public class PlaceService {
     public void deletePlace(int id){
         placeRepository.deleteById(id);
     }
+
+    public PlaceModel placeById(int id){
+        return placeRepository.findById(id).orElseThrow();
+    }
 }
