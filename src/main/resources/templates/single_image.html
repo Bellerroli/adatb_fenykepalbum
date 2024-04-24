@@ -39,7 +39,7 @@
 <div class="content pic-details">
     <img th:src="'/imgs/'+(${picture.getFilepath()})" alt=""><br>
     <h3 th:text="${picture.getPictureTitle()}"></h3><br>
-    <span th:text="${picture.getPictureDescription()}"></span><br>
+    <span th:text="${picture.getPictureDescription()}"></span><br><br><br>
     Kategóriák:
     <div class="curr-categs" th:each="categ : ${currCategories}">
         <a th:if="${isPictureUserPicture}" th:text="' '+${categ.getCategoryDesignation()}"

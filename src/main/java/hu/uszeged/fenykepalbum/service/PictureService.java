@@ -81,5 +81,7 @@ public class PictureService {
         return false;
     }
 
-
+    public List<PictureModel> userPictures(String email){
+        return pictureRepository.findPictureByEmail(email);
+    }
 }

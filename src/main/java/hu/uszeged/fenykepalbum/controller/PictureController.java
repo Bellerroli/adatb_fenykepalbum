@@ -64,4 +64,26 @@ public class PictureController {
         model.addAttribute("currCategories", categoryService.categoriesOfPicture(id));
         return "single_image";
     }
+
+    @GetMapping("/user/gallery")
+    public String userGallery(Model model){
+        try{
+            model.addAttribute("userPictures", pictureService.userPictures(SecurityContextHolder.getContext().
+                    getAuthentication().getName()));
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+
+        return "user/gallery";
+    }
+
+    @GetMapping("/picture/delete/{id}")
+    public String deletePicture(@PathVariable("id") int pictureID){
+        try{
+            pictureService.deletePicture(pictureID);
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return "redirect:/user/gallery";
+    }
 }

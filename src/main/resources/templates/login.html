@@ -59,7 +59,7 @@
     </style>
 </head>
 <body>
-<nav th:insert="nav.html"></nav>
+<nav><a th:href="@{/}">Kezdőlap</a></nav>
 <br>
 <div th:if="${param.msg}">
     <p th:text="${param.msg}"></p>

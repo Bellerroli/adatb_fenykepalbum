@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/image_gallery.css">
+    <title>Felhasználó | Galéria</title>
+</head>
+
+<style>
+    a{
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+    }
+</style>
+<body>
+<nav th:insert="nav.html"></nav>
+<br>
+
+<h1>Képeim</h1>
+
+<div id="wrapper">
+    <div th:each="picture : ${userPictures}" class="picture">
+        <a th:href="'/gallery/'+(${picture.getPictureID()})">
+            <img th:src="'/imgs/'+(${picture.getFilepath()})" th:alt="${picture.getPictureTitle()}">
+        </a><br>
+        <a th:href="'/picture/delete/'+${picture.getPictureID()}">Fénykép törlése</a>
+    </div>
+</div>
+
+</body>
+</html>
