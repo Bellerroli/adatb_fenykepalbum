@@ -30,7 +30,7 @@ public class CategoryPictureService {
         categoryPictureRepository.deleteByCategoryIDAndPictureID(categoryID, pictureID);
     }
 
-    public List<CategoryModel> categoriesWithoutPicture(int pictureID){
-        return categoryPictureRepository.findWithoutPictureID(pictureID);
-    }
+//    public List<CategoryModel> categoriesWithoutPicture(int pictureID){
+//        return categoryPictureRepository.findWithoutPictureID(pictureID);
+//    }
 }
