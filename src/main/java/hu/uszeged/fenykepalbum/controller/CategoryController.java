@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -43,5 +44,15 @@ public class CategoryController {
     public String addCategoryToPicture(@ModelAttribute("categoryPicture") CategoryPictureUploadModel categoryPictureUploadModel){
         categoryPictureService.saveCategoryPicture(categoryPictureUploadModel);
         return "redirect:/gallery/"+categoryPictureUploadModel.getPictureID();
+    }
+
+    @GetMapping("/category/picture/remove")
+    public String removeCategoryFromPicture(@RequestParam("catid") int catID, @RequestParam("pictureid") int pictureID){
+        try{
+            categoryPictureService.deleteCategoryFromPicture(catID, pictureID);
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return "redirect:/gallery/"+pictureID;
     }
 }

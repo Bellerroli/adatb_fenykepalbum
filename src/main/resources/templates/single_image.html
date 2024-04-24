@@ -22,6 +22,14 @@
         border: 1px solid black;
         padding: 10px;
     }
+    .content img{
+        max-width: 95vw;
+    }
+    .curr-categs p,a{
+        display: inline;
+        margin: 0;
+        padding: 0;
+    }
 </style>
 <body>
 
@@ -32,6 +40,12 @@
     <img th:src="'/imgs/'+(${picture.getFilepath()})" alt=""><br>
     <h3 th:text="${picture.getPictureTitle()}"></h3><br>
     <span th:text="${picture.getPictureDescription()}"></span><br>
+    Kategóriák:
+    <div class="curr-categs" th:each="categ : ${currCategories}">
+        <a th:if="${isPictureUserPicture}" th:text="' '+${categ.getCategoryDesignation()}"
+           th:href="@{/category/picture/remove(catid=${categ.getCategoryID()}, pictureid=${picture.getPictureID()})}"></a>
+        <p th:if="${!isPictureUserPicture}" th:text="' '+${categ.getCategoryDesignation()}"></p>
+    </div>
 </div>
 <br>
 
@@ -45,7 +59,7 @@
     </form>
 </div>
 
-<div th:if="${authusername == picture.getEmail()}" class="content categs">
+<div th:if="${isPictureUserPicture}" class="content categs">
     <form th:action="@{/category/addPicture}" th:object="${categoryPicture}" method="post">
         <input type="hidden" th:value="${picture.getPictureID()}" th:attr="name='pictureID'">
         <select th:field="*{categoryIDs}" multiple="multiple">

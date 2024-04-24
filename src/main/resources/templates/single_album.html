@@ -16,7 +16,7 @@
     <div class="picture" th:each="picture: ${albumPictures}">
         <a th:href="'/gallery/'+${picture.getPictureID()}" style="display: block">
             <img th:src="'/imgs/'+${picture.getFilePath()}" th:alt="${picture.getTitle()}"><br>
-            <form th:action="@{/album/picture/delete}" th:object="${pictureToRemove}" method="post">
+            <form th:if="${userEmail == albumDetails.getEmail()}" th:action="@{/album/picture/delete}" th:object="${pictureToRemove}" method="post">
                 <input type="hidden" th:value="${picture.getPictureID()}" th:attr="name='pictureID'">
                 <input type="hidden" th:value="${albumDetails.getAlbumID()}" th:attr="name='albumID'">
                 <input type="submit" value="Fénykép törlése az albumból">

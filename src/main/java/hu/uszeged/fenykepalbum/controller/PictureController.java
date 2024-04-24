@@ -58,9 +58,10 @@ public class PictureController {
         model.addAttribute("comments", commentService.commentsByPictureiD((long) id));
         model.addAttribute("newComment", new CommentModel());
         model.addAttribute("categories", categoryService.allCategories());
-        model.addAttribute("authusername", SecurityContextHolder.getContext()
-                .getAuthentication().getName());
+        model.addAttribute("isPictureUserPicture", SecurityContextHolder.getContext()
+                .getAuthentication().getName().equals(pictureService.pictureById(id).getEmail()));
         model.addAttribute("categoryPicture", new CategoryPictureUploadModel());
+        model.addAttribute("currCategories", categoryService.categoriesOfPicture(id));
         return "single_image";
     }
 }

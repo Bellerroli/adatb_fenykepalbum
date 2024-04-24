@@ -35,4 +35,8 @@ public class CategoryService {
     public void deleteCategory(int id){
         categoryRepository.deleteById(id);
     }
+
+    public List<CategoryModel> categoriesOfPicture(int pictureID){
+        return categoryRepository.findCategoriesByPictureID(pictureID);
+    }
 }

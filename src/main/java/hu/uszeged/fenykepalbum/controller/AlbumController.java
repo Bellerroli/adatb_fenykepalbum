@@ -6,6 +6,7 @@ import hu.uszeged.fenykepalbum.service.AlbumPictureService;
 import hu.uszeged.fenykepalbum.service.AlbumService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,6 +59,7 @@ public class AlbumController {
         model.addAttribute("albumDetails", albumService.albumById(id));
         model.addAttribute("albumPictures", albumPictureService.albumPicturesByAlbumID(id));
         model.addAttribute("pictureToRemove", new AlbumPictureModel());
+        model.addAttribute("userEmail", SecurityContextHolder.getContext().getAuthentication().getName());
         return "single_album";
     }
 
