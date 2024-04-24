@@ -70,4 +70,14 @@ public class AlbumController {
         }
         return "redirect:/user/album/"+albumPictureModel.getAlbumID();
     }
+
+    @GetMapping("/album/delete/{id}")
+    public String deleteAlbum(@PathVariable("id") int albumid){
+        try{
+            albumService.deleteAlbum(albumid);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+        return "redirect:/user/albums";
+    }
 }

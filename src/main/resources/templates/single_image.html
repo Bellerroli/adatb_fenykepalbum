@@ -5,19 +5,37 @@
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
     <title>Fényképnézegető</title>
 </head>
+<style>
+    .content{
+        margin: 10px auto;
+        width: fit-content;
+    }
+    .pic-details{
+        text-align: center;
+        border: 1px solid black;
+        padding-bottom: 10px;
+    }
+    .categs{
+        text-align: center;
+    }
+    .comment{
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
 <body>
 
 <nav th:insert="nav.html"></nav>
 <br>
 
-<div>
+<div class="content pic-details">
     <img th:src="'/imgs/'+(${picture.getFilepath()})" alt=""><br>
-    <span th:text="${picture.getPictureTitle()}"></span><br>
+    <h3 th:text="${picture.getPictureTitle()}"></h3><br>
     <span th:text="${picture.getPictureDescription()}"></span><br>
 </div>
 <br>
 
-<div>
+<div class="content">
     <form th:action="@{/albums/addPicture}" th:object="${albumPicture}" method="post">
         <input type="hidden" th:value="${picture.getPictureID()}" th:attr="name='pictureID'">
         <select th:field="*{albumID}">
@@ -27,7 +45,7 @@
     </form>
 </div>
 
-<div th:if="${authusername == picture.getEmail()}">
+<div th:if="${authusername == picture.getEmail()}" class="content categs">
     <form th:action="@{/category/addPicture}" th:object="${categoryPicture}" method="post">
         <input type="hidden" th:value="${picture.getPictureID()}" th:attr="name='pictureID'">
         <select th:field="*{categoryIDs}" multiple="multiple">
@@ -38,17 +56,20 @@
     </form>
 </div>
 
-<div class="comments">
-    <span th:each="comment: ${comments}">
+<div class="comments content">
+    <div th:each="comment: ${comments}" class="comment">
         <p th:text="${comment.getEmail()}"></p>
         <p th:text="${comment.getContent()}"></p>
         <p th:text="${comment.getTimeStamp()}"></p>
-    </span>
+    </div>
 </div>
-<form th:action="@{/comment/save}" th:object="${newComment}" method="post">
-    <input type="hidden" th:value="${picture.getPictureID()}" th:attr="name='pictureID'">
-    <input type="text" th:field="*{content}">
-    <input type="submit" value="Küld">
-</form>
+<div class="content">
+    <form th:action="@{/comment/save}" th:object="${newComment}" method="post">
+        <input type="hidden" th:value="${picture.getPictureID()}" th:attr="name='pictureID'">
+        <input type="text" th:field="*{content}" placeholder="Itt kommentelhetsz...">
+        <input type="submit" value="Küld">
+    </form>
+</div>
+
 </body>
 </html>
