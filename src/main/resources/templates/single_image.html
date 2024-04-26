@@ -30,6 +30,12 @@
         margin: 0;
         padding: 0;
     }
+
+    .rating{
+        text-align: center;
+        border: 1px solid black;
+        padding: 10px;
+    }
 </style>
 <body>
 
@@ -48,6 +54,17 @@
     </div>
     <br>
     <div th:text="'Készült: '+${picturePlace}"></div>
+</div>
+
+<div class="content rating">
+<!--    <p th:text="${picture.getRatingText()}"></p><br>-->
+    <p th:text="'Érték: '+${picture.getRating()}"></p>
+    Értékelés:
+    <a th:href="@{/picture/update(pictureID=${picture.getPictureID()}, rating=1)}">1</a>
+    <a th:href="@{/picture/update(pictureID=${picture.getPictureID()}, rating=2)}">2</a>
+    <a th:href="@{/picture/update(pictureID=${picture.getPictureID()}, rating=3)}">3</a>
+    <a th:href="@{/picture/update(pictureID=${picture.getPictureID()}, rating=4)}">4</a>
+    <a th:href="@{/picture/update(pictureID=${picture.getPictureID()}, rating=5)}">5</a>
 </div>
 <br>
 

@@ -1,19 +1,13 @@
 package hu.uszeged.fenykepalbum.controller;
 
-import hu.uszeged.fenykepalbum.model.AlbumPictureModel;
-import hu.uszeged.fenykepalbum.model.CategoryPictureUploadModel;
-import hu.uszeged.fenykepalbum.model.CommentModel;
-import hu.uszeged.fenykepalbum.model.PictureUploadModel;
+import hu.uszeged.fenykepalbum.model.*;
 import hu.uszeged.fenykepalbum.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -87,5 +81,17 @@ public class PictureController {
             System.err.println(e.getMessage());
         }
         return "redirect:/user/gallery";
+    }
+
+    @GetMapping("/picture/update")
+    public String updatePicture(@RequestParam("pictureID") int id, @RequestParam("rating") int newRating){
+        try{
+            PictureModel pictureModel = pictureService.pictureById(id);
+            pictureModel.setRating(newRating);
+            pictureService.updatePicture(pictureModel);
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return "redirect:/gallery/"+id;
     }
 }

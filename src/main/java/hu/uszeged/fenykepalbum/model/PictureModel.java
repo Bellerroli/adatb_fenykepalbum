@@ -36,4 +36,6 @@ public class PictureModel {
     private int placeID;
     @Column(name = "FAJL_ELERES")
     private String filepath;
+//    @Column(name = "SZOVEGES_ERTEKELES")
+//    private String ratingText;
 }

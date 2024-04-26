@@ -30,9 +30,11 @@ public interface PictureRepository extends JpaRepository<PictureModel, Integer> 
             helyszin.varos AS city,
             helyszin.telepules AS settlement,
             kep.fajl_eleres AS filePath
+//           kep.szoveges_ertekeles as ratingText
             FROM KEP INNER JOIN HELYSZIN ON(kep.hely_id = helyszin.hely_id)
             WHERE kep_id = :id
     """,
     nativeQuery = true)
     PictureDataWithPlace findByIdWithPlace(@Param("id") int pictureid);
+
 }

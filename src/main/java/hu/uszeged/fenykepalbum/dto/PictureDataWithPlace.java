@@ -14,4 +14,6 @@ public interface PictureDataWithPlace {
     String getCity();
     String getSettlement();
     String getFilePath();
+
+//    String getRatingText();
 }

@@ -89,4 +89,8 @@ public class PictureService {
     public List<PictureModel> userPictures(String email){
         return pictureRepository.findPictureByEmail(email);
     }
+
+    public void updatePicture(PictureModel pictureModel){
+        pictureRepository.save(pictureModel);
+    }
 }
