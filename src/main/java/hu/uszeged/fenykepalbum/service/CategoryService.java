@@ -39,4 +39,8 @@ public class CategoryService {
     public List<CategoryModel> categoriesOfPicture(int pictureID){
         return categoryRepository.findCategoriesByPictureID(pictureID);
     }
+
+    public List<CategoryModel> categoriesWithoutPicture(int pictureID){
+        return categoryRepository.findByPictureIDFiltered(pictureID);
+    }
 }

@@ -46,18 +46,24 @@ public class PictureController {
 
     @GetMapping("/gallery/{id}")
     public String showPicture(@PathVariable("id") int id, Model model){
-        model.addAttribute("picture", pictureService.pictureById(id));
-        model.addAttribute("albums", albumService.userAlbumModels());
-        model.addAttribute("albumPicture", new AlbumPictureModel());
-        model.addAttribute("comments", commentService.commentsByPictureiD((long) id));
-        model.addAttribute("newComment", new CommentModel());
-        model.addAttribute("categories", categoryService.allCategories());
-        model.addAttribute("isPictureUserPicture", SecurityContextHolder.getContext()
-                .getAuthentication().getName().equals(pictureService.pictureById(id).getEmail()));
-        model.addAttribute("categoryPicture", new CategoryPictureUploadModel());
-        model.addAttribute("currCategories", categoryService.categoriesOfPicture(id));
-        model.addAttribute("isUserAdmin", SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN")));
-        model.addAttribute("picturePlace", placeService.placeById(pictureService.pictureById(id).getPlaceID()));
+        try{
+            model.addAttribute("picture", pictureService.pictureById(id));
+            model.addAttribute("albums", albumService.userAlbumsWithoutPicture(id));
+            model.addAttribute("albumPicture", new AlbumPictureModel());
+            model.addAttribute("comments", commentService.commentsByPictureiD((long) id));
+            model.addAttribute("newComment", new CommentModel());
+            model.addAttribute("categories", categoryService.categoriesWithoutPicture(id));
+            model.addAttribute("isPictureUserPicture", SecurityContextHolder.getContext()
+                    .getAuthentication().getName().equals(pictureService.pictureById(id).getEmail()));
+            model.addAttribute("categoryPicture", new CategoryPictureUploadModel());
+            model.addAttribute("currCategories", categoryService.categoriesOfPicture(id));
+            model.addAttribute("isUserAdmin", SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN")));
+            model.addAttribute("picturePlace", placeService.placeById(pictureService.pictureById(id).getPlaceID()));
+            model.addAttribute("pictureWithData", pictureService.pictureByIdWithPlace(id));
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+
         return "single_image";
     }
 

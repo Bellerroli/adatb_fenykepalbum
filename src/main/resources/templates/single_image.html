@@ -57,8 +57,8 @@
 </div>
 
 <div class="content rating">
-<!--    <p th:text="${picture.getRatingText()}"></p><br>-->
-    <p th:text="'Érték: '+${picture.getRating()}"></p>
+    <p th:text="'Értékelés: '+${picture.getRatingText()}"></p><br>
+<!--    <p th:text="'Érték: '+${picture.getRating()}"></p>-->
     Értékelés:
     <a th:href="@{/picture/update(pictureID=${picture.getPictureID()}, rating=1)}">1</a>
     <a th:href="@{/picture/update(pictureID=${picture.getPictureID()}, rating=2)}">2</a>

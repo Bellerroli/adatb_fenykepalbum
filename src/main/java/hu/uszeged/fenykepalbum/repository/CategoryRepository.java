@@ -19,4 +19,11 @@ public interface CategoryRepository extends JpaRepository<CategoryModel, Integer
 """,
     nativeQuery = true)
     List<CategoryModel> findCategoriesByPictureID(@Param("pictureid") int pictureid);
+
+    @Query(value = """
+    SELECT DISTINCT kategoria.kategoria_id, kategoria.megnevezes, kategoria.leiras 
+    FROM KATEGORIA LEFT JOIN KATEGORIA_KEP ON (kategoria.kategoria_id = kategoria_kep.kategoria_id) 
+    WHERE should_include_category(:pictureid, kategoria.kategoria_id) = 1
+""",nativeQuery = true)
+    List<CategoryModel> findByPictureIDFiltered(@Param("pictureid") int pictureid);
 }

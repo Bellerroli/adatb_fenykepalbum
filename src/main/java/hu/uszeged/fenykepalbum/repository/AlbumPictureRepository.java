@@ -25,8 +25,8 @@ public interface AlbumPictureRepository extends JpaRepository<AlbumPictureModel,
         helyszin.megye AS county,
         helyszin.varos AS city,
         helyszin.telepules AS settlement,
+        kep.szoveges_ertekeles as ratingText,
         kep.fajl_eleres AS filePath
-        //           kep.szoveges_ertekeles as ratingText
         FROM (ALBUM_KEP INNER JOIN KEP ON (album_kep.kep_id = kep.kep_id))
         INNER JOIN HELYSZIN ON (helyszin.hely_id = kep.hely_id)\s
         WHERE album_kep.album_id = :albumid

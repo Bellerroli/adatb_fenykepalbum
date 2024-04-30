@@ -53,4 +53,10 @@ public class AlbumService {
     public AlbumModel albumById(int id){
         return albumRepository.findById(id).orElseThrow();
     }
+
+    public List<AlbumModel> userAlbumsWithoutPicture(int pictureid){
+        return albumRepository.
+                findByEmailAndPictureIDFiltered(SecurityContextHolder.
+                        getContext().getAuthentication().getName(), pictureid);
+    }
 }

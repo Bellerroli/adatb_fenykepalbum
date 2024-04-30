@@ -3,7 +3,7 @@ package hu.uszeged.fenykepalbum.dto;
 import java.util.Date;
 
 public interface PictureDataWithPlace {
-    String getEamil();
+    String getEmail();
     int getPictureID();
     String getTitle();
     String getDescription();
@@ -15,5 +15,5 @@ public interface PictureDataWithPlace {
     String getSettlement();
     String getFilePath();
 
-//    String getRatingText();
+    String getRatingText();
 }
