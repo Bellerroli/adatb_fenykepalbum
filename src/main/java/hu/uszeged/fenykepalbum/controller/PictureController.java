@@ -23,11 +23,17 @@ public class PictureController {
     @PostMapping("/gallery/upload")
     public String imageUpload(@ModelAttribute("uploadModel") PictureUploadModel pictureUploadModel){
         try {
-            if(pictureService.savePictureFile(pictureUploadModel))
-                pictureService.addNewPicture(pictureUploadModel);
+            if(pictureService.savePictureFile(pictureUploadModel)){
+                PictureModel newPic = pictureService.addNewPicture(pictureUploadModel);
+                if(!pictureUploadModel.getCategoryIDs().isEmpty()){
+                    categoryPictureService.saveCategoryPicture(new CategoryPictureUploadModel(newPic.getPictureID(),
+                            pictureUploadModel.getCategoryIDs()));
+
+                }
+            }
             else throw new Exception("Not supported picture format");
         }catch(Exception e){
-            return "redirect:/gallery/pictureForm?msg=Upload+failed";
+            return "redirect:/gallery/pictureForm?msg="+e.getMessage();
         }
         return "redirect:/gallery/pictureForm?msg=Upload+successful";
     }
@@ -36,6 +42,7 @@ public class PictureController {
     public String imageUploadForm(Model model){
         model.addAttribute("uploadModel", new PictureUploadModel());
         model.addAttribute("places", placeService.allPlaces());
+        model.addAttribute("categories", categoryService.allCategories());
         return "image_upload";
     }
 

@@ -21,7 +21,7 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class PictureService {
-    private final String[] acceptedExtensions = {"png", "jpg", "jpeg"};
+    private final String[] acceptedExtensions = {"png", "jpg", "jpeg", "webp"};
     private final String IMG_ROOT = System.getProperty("user.dir")+"/src/main/resources/static/imgs";
     private final PictureRepository pictureRepository;
 
@@ -29,7 +29,7 @@ public class PictureService {
         return pictureRepository.findAll();
     }
 
-    public boolean addNewPicture(PictureUploadModel pictureUploadModel){
+    public PictureModel addNewPicture(PictureUploadModel pictureUploadModel){
         PictureModel pictureModel = PictureModel.builder()
                 .email(SecurityContextHolder.getContext().getAuthentication().getName())
                 .pictureTitle(pictureUploadModel.getTitle())
@@ -39,8 +39,7 @@ public class PictureService {
                 .filepath(pictureUploadModel.getNewFileName())
                 .placeID(pictureUploadModel.getPlaceID())
                 .build();
-        pictureRepository.save(pictureModel);
-        return true;
+        return pictureRepository.save(pictureModel);
     }
 
     public boolean savePictureFile(PictureUploadModel pictureUploadModel) throws IOException {

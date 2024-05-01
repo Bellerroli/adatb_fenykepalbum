@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @Data
@@ -19,4 +20,5 @@ public class PictureUploadModel {
     private MultipartFile file;
     private Date date;
     private String newFileName;
+    private List<Integer> categoryIDs;
 }

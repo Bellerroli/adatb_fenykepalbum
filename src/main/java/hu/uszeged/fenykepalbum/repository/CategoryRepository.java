@@ -16,6 +16,7 @@ public interface CategoryRepository extends JpaRepository<CategoryModel, Integer
         SELECT kategoria.kategoria_id, kategoria.megnevezes, kategoria.leiras
         FROM KATEGORIA INNER JOIN KATEGORIA_KEP ON (kategoria.kategoria_id = kategoria_kep.kategoria_id)
         WHERE kategoria_kep.kep_id = :pictureid
+        ORDER BY kategoria.megnevezes
 """,
     nativeQuery = true)
     List<CategoryModel> findCategoriesByPictureID(@Param("pictureid") int pictureid);
@@ -24,6 +25,10 @@ public interface CategoryRepository extends JpaRepository<CategoryModel, Integer
     SELECT DISTINCT kategoria.kategoria_id, kategoria.megnevezes, kategoria.leiras 
     FROM KATEGORIA LEFT JOIN KATEGORIA_KEP ON (kategoria.kategoria_id = kategoria_kep.kategoria_id) 
     WHERE should_include_category(:pictureid, kategoria.kategoria_id) = 1
+    ORDER BY kategoria.megnevezes
 """,nativeQuery = true)
     List<CategoryModel> findByPictureIDFiltered(@Param("pictureid") int pictureid);
+    @Query(value = "SELECT * FROM KATEGORIA ORDER BY megnevezes",
+    nativeQuery = true)
+    List<CategoryModel> findAllOrdered();
 }

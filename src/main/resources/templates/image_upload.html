@@ -31,6 +31,12 @@
         <label for="file">Fájl kiválasztása:</label>
         <input type="file" id="file" th:field="*{file}">
 
+        <label for="cats">Kategóriák</label>
+        <select th:field="*{categoryIDs}" multiple="multiple">
+            <option th:each="category: ${categories}" th:value="${category.getCategoryID()}"
+                    th:text="${category.getCategoryDesignation()}"></option>
+        </select><br>
+
         <input type="submit" value="Feltöltés">
     </form>
 </div>
