@@ -80,7 +80,8 @@ public class PictureService {
     }
 
     public boolean deletePicture(int id){
-        File file = new File(IMG_ROOT+"/"+pictureById(id).getFilepath());
+        Path path = Paths.get(IMG_ROOT, pictureById(id).getFilepath());
+        File file = new File(path.toString());
         if(file.delete()){
             pictureRepository.deleteById(id);
             return true;
