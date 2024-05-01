@@ -18,6 +18,7 @@ public class PictureController {
     private final CommentService commentService;
     private final AlbumService albumService;
     private final CategoryService categoryService;
+    private final CategoryPictureService categoryPictureService;
 
     @PostMapping("/gallery/upload")
     public String imageUpload(@ModelAttribute("uploadModel") PictureUploadModel pictureUploadModel){
@@ -39,8 +40,22 @@ public class PictureController {
     }
 
     @GetMapping("/gallery")
-    public String gallery(Model model){
-        model.addAttribute("pictures", pictureService.allPictures());
+    public String gallery(@RequestParam(name="category", required = false) Integer categoryID, Model model){
+        try{
+            if(categoryID != null) {
+                if(categoryID == 0) return "redirect:/gallery";
+                model.addAttribute("pictures", pictureService.picturesInCategory(categoryID));
+                model.addAttribute("currCategory", categoryID);
+            }
+            else {
+                model.addAttribute("pictures", pictureService.allPictures());
+                model.addAttribute("currCategory", 0);
+            }
+            model.addAttribute("categories", categoryService.allCategories());
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+
         return "gallery";
     }
 

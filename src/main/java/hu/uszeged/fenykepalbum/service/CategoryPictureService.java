@@ -3,6 +3,7 @@ package hu.uszeged.fenykepalbum.service;
 import hu.uszeged.fenykepalbum.model.CategoryModel;
 import hu.uszeged.fenykepalbum.model.CategoryPictureModel;
 import hu.uszeged.fenykepalbum.model.CategoryPictureUploadModel;
+import hu.uszeged.fenykepalbum.model.PictureModel;
 import hu.uszeged.fenykepalbum.repository.CategoryPictureRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,4 @@ public class CategoryPictureService {
     public void deleteCategoryFromPicture(int categoryID, int pictureID){
         categoryPictureRepository.deleteByCategoryIDAndPictureID(categoryID, pictureID);
     }
-
-//    public List<CategoryModel> categoriesWithoutPicture(int pictureID){
-//        return categoryPictureRepository.findWithoutPictureID(pictureID);
-//    }
 }

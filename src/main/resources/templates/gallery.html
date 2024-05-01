@@ -8,7 +8,7 @@
 </head>
 
 <style>
-    a{
+    a {
         display: block;
     }
 </style>
@@ -17,6 +17,15 @@
 <br>
 
 <h1>Galéria</h1>
+
+<div class="category-picker">
+    <select th:onchange="'window.location.href = \'' + @{/gallery}+'?category=\'+this.value'">
+        <option value="0">Összes</option>
+        <option th:each="category: ${categories}" th:selected="${currCategory == category.getCategoryID()}"
+                th:text="${category.getCategoryDesignation()}" th:value="${category.getCategoryID()}">
+        </option>
+    </select>
+</div>
 
 <div id="wrapper">
     <div th:each="picture : ${pictures}" class="picture">

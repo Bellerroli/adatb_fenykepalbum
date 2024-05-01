@@ -2,6 +2,7 @@ package hu.uszeged.fenykepalbum.repository;
 
 import hu.uszeged.fenykepalbum.model.CategoryModel;
 import hu.uszeged.fenykepalbum.model.CategoryPictureModel;
+import hu.uszeged.fenykepalbum.model.PictureModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

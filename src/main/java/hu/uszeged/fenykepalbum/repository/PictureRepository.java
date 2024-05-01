@@ -37,4 +37,13 @@ public interface PictureRepository extends JpaRepository<PictureModel, Integer> 
     nativeQuery = true)
     PictureDataWithPlace findByIdWithPlace(@Param("id") int pictureid);
 
+    @Query(value = """
+        SELECT
+            kep.*
+        FROM KEP INNER JOIN KATEGORIA_KEP ON (kep.kep_id = kategoria_kep.kep_id)
+        WHERE kategoria_kep.kategoria_id = :catid
+""",
+            nativeQuery = true)
+    List<PictureModel> findByCategory(@Param("catid") int categoryid);
+
 }

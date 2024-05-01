@@ -93,4 +93,9 @@ public class PictureService {
     public void updatePicture(PictureModel pictureModel){
         pictureRepository.save(pictureModel);
     }
+
+
+    public List<PictureModel> picturesInCategory(int categoryID){
+        return pictureRepository.findByCategory(categoryID);
+    }
 }
