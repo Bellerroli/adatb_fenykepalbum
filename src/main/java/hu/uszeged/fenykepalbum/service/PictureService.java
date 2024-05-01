@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PictureService {
     private final String[] acceptedExtensions = {"png", "jpg", "jpeg", "webp"};
-    private final String IMG_ROOT = System.getProperty("user.dir")+"/src/main/resources/static/imgs";
+    private final String IMG_ROOT_str = System.getProperty("user.dir")+"/src/main/resources/static/imgs";
+    private final Path path = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static", "imgs");
+    private final String IMG_ROOT = path.toString();
     private final PictureRepository pictureRepository;
 
     public List<PictureModel> allPictures(){
@@ -43,9 +46,10 @@ public class PictureService {
     }
 
     public boolean savePictureFile(PictureUploadModel pictureUploadModel) throws IOException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss");
         if(!isPictureFormat(pictureUploadModel)) return false;
         Date date = new Date();
-        String filename = SecurityContextHolder.getContext().getAuthentication().getName().split("@")[0]+"_"+(date)+"."+fileExtension(pictureUploadModel);
+        String filename = SecurityContextHolder.getContext().getAuthentication().getName().split("@")[0]+"_"+(formatter.format(date))+"."+fileExtension(pictureUploadModel);
         Path filenameAndPath = Paths.get(IMG_ROOT, filename);
         Files.write(filenameAndPath, pictureUploadModel.getFile().getBytes());
         pictureUploadModel.setDate(date);
