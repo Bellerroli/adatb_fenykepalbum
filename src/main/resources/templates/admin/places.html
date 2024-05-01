@@ -7,6 +7,8 @@
 </head>
 <body>
 
+
+
 <nav>
     <ul>
         <li><a th:href="@{/}">Felhasználói főoldal</a></li>
@@ -17,7 +19,7 @@
         <li><a th:href="@{/admin/places}">Helykezelés</a></li>
     </ul>
 </nav>
-
+<div th:if="${param.msg}" th:text="${param.msg}"></div>
 <table>
     <tr>
         <th>Ország</th>

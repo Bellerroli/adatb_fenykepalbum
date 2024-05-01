@@ -97,7 +97,13 @@ public class AdminUserController {
     @Secured("ROLE_ADMIN")
     @GetMapping("/admin/places/delete/{id}")
     public String adminDeletePlace(@PathVariable("id") int id){
-        placeService.deletePlace(id);
+        try{
+            placeService.deletePlace(id);
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+            return "redirect:/admin/places?msg=Cannot+delete";
+        }
+
         return "redirect:/admin/places";
     }
 }
