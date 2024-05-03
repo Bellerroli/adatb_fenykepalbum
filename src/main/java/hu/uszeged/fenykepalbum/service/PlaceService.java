@@ -1,5 +1,7 @@
 package hu.uszeged.fenykepalbum.service;
 
+import hu.uszeged.fenykepalbum.dto.PictureDataWithPlace;
+import hu.uszeged.fenykepalbum.dto.PictureNumberByCounty;
 import hu.uszeged.fenykepalbum.model.PlaceModel;
 import hu.uszeged.fenykepalbum.model.PlaceUploadModel;
 import hu.uszeged.fenykepalbum.repository.PlaceRepository;
@@ -36,5 +38,9 @@ public class PlaceService {
 
     public PlaceModel placeById(int id){
         return placeRepository.findById(id).orElseThrow();
+    }
+
+    public List<PictureNumberByCounty> countyPictures(){
+        return  placeRepository.picturesInCounty();
     }
 }

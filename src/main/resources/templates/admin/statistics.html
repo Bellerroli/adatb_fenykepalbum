@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <title>Admin | Statisztikák</title>
+
+    <style>
+        .table-container{
+            display: flex;
+        }
+        .table-block{
+            display: block;
+            margin-right: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Felhasználói főoldal</a></li>
+        <li><a th:href="@{/admin/users}">Felhasználókezelés</a></li>
+        <li><a th:href="@{/admin/pictures}">Fényképkezelés</a></li>
+        <li><a th:href="@{/admin/albums}">Albumkezelés</a></li>
+        <li><a th:href="@{/admin/categories}">Kategóriakezelés</a></li>
+        <li><a th:href="@{/admin/places}">Helykezelés</a></li>
+        <li><a th:href="@{/admin/statistics}">Statisztikák</a></li>
+    </ul>
+</nav>
+<div th:if="${param.msg}" th:text="${param.msg}"></div>
+
+<div class="table-container">
+    <div class="table-block">
+        <table>
+            <h3>Hány kép készült a megyékben?</h3>
+            <br>
+            <tr>
+                <th>Megye</th>
+                <th>Képek száma</th>
+            </tr>
+            <tr th:each="statistic: ${place_statistics}">
+                <td th:text="${statistic.getPlaceCounty()}"></td>
+                <td th:text="${statistic.getPictureNumber()}"></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div class="table-block">
+        <table>
+            <h3>Melyik kategória hányszor van felhasználva?</h3>
+            <br>
+            <tr>
+                <th>Kategória neve</th>
+                <th>Felhasználva</th>
+            </tr>
+            <tr th:each="statistic: ${category_statistics}">
+                <td th:text="${statistic.getDesignation()}"></td>
+                <td th:text="${statistic.getUsed()}"></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div class="table-block">
+        <table>
+            <h3>Melyik képeknél van csak 1 kategória, és mi az?</h3>
+            <br>
+            <tr>
+                <th>Cím</th>
+                <th>Kategória neve</th>
+            </tr>
+            <tr th:each="statistic: ${picture_one_category}">
+                <td th:text="${statistic.getTitle()}"></td>
+                <td th:text="${statistic.getDesignation()}"></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div class="table-block">
+        <table>
+            <h3>Melyik felhasználók nem töltöttek még fel képet?</h3>
+            <br>
+            <tr>
+                <th>Email</th>
+                <th>Teljes név</th>
+            </tr>
+            <tr th:each="statistic: ${user_not_upload}">
+                <td th:text="${statistic.getEmail()}"></td>
+                <td th:text="${statistic.getFullName()}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

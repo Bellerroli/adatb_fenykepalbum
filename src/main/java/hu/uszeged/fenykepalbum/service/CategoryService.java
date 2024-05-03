@@ -1,5 +1,6 @@
 package hu.uszeged.fenykepalbum.service;
 
+import hu.uszeged.fenykepalbum.dto.UsedCategoryNumber;
 import hu.uszeged.fenykepalbum.model.CategoryCreateModel;
 import hu.uszeged.fenykepalbum.model.CategoryModel;
 import hu.uszeged.fenykepalbum.model.PlaceModel;
@@ -42,5 +43,9 @@ public class CategoryService {
 
     public List<CategoryModel> categoriesWithoutPicture(int pictureID){
         return categoryRepository.findByPictureIDFiltered(pictureID);
+    }
+
+    public List<UsedCategoryNumber> categoryNumber(){
+        return categoryRepository.usedCategory();
     }
 }

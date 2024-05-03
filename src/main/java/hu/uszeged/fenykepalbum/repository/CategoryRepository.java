@@ -1,5 +1,6 @@
 package hu.uszeged.fenykepalbum.repository;
 
+import hu.uszeged.fenykepalbum.dto.UsedCategoryNumber;
 import hu.uszeged.fenykepalbum.model.CategoryModel;
 import hu.uszeged.fenykepalbum.model.PictureModel;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,4 +32,15 @@ public interface CategoryRepository extends JpaRepository<CategoryModel, Integer
     @Query(value = "SELECT * FROM KATEGORIA ORDER BY megnevezes",
     nativeQuery = true)
     List<CategoryModel> findAllOrdered();
+
+    @Query(value = """
+            SELECT KATEGORIA.megnevezes AS designation, COUNT(KATEGORIA_KEP.kep_id) AS used
+            FROM KATEGORIA
+            JOIN KATEGORIA_KEP ON Kategoria.kategoria_id = KATEGORIA_KEP.kategoria_id
+            JOIN Kep ON KATEGORIA_KEP.kep_id = KEP.kep_id
+            GROUP BY KATEGORIA.megnevezes
+            ORDER BY used DESC
+            """,
+            nativeQuery = true)
+    List<UsedCategoryNumber> usedCategory();
 }

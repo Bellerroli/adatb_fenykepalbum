@@ -106,4 +106,13 @@ public class AdminUserController {
 
         return "redirect:/admin/places";
     }
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin/statistics")
+    public String adminStatistics(Model model){
+        model.addAttribute("place_statistics", placeService.countyPictures());
+        model.addAttribute("category_statistics", categoryService.categoryNumber());
+        model.addAttribute("picture_one_category", pictureService.pictureOneCategory());
+        model.addAttribute("user_not_upload", userService.userNotIn());
+        return "/admin/statistics";
+    }
 }

@@ -1,6 +1,7 @@
 package hu.uszeged.fenykepalbum.repository;
 
 import hu.uszeged.fenykepalbum.dto.PictureDataWithPlace;
+import hu.uszeged.fenykepalbum.dto.PictureOneCategory;
 import hu.uszeged.fenykepalbum.model.PictureModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -45,5 +46,18 @@ public interface PictureRepository extends JpaRepository<PictureModel, Integer> 
 """,
             nativeQuery = true)
     List<PictureModel> findByCategory(@Param("catid") int categoryid);
+
+    @Query(value = """
+           SELECT KEP.cim as title, KATEGORIA.megnevezes as designation
+           FROM (SELECT KATEGORIA_KEP.kep_id as pictureId, COUNT(KATEGORIA_KEP.kategoria_id) as howMany
+           FROM KATEGORIA_KEP
+           Group by kep_id)
+           JOIN KEP ON pictureId = KEP.kep_id
+           JOIN KATEGORIA_KEP ON KATEGORIA_KEP.kep_id = pictureId
+           JOIN KATEGORIA ON KATEGORIA_KEP.kategoria_id = KATEGORIA.kategoria_id
+           where howMany = 1
+    """,
+            nativeQuery = true)
+    List<PictureOneCategory> oneCategoryInPicture();
 
 }

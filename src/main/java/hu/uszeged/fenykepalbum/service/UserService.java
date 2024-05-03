@@ -1,5 +1,6 @@
 package hu.uszeged.fenykepalbum.service;
 
+import hu.uszeged.fenykepalbum.dto.UserNotInPictures;
 import hu.uszeged.fenykepalbum.model.UserModel;
 import hu.uszeged.fenykepalbum.model.UserUpdateModel;
 import hu.uszeged.fenykepalbum.repository.UserRepository;
@@ -58,5 +59,9 @@ public class UserService {
 
     public boolean validatePassword(String pwd, String pwdAgain){
         return (pwd.equals(pwdAgain) && pwd.length() >= 6);
+    }
+
+    public List<UserNotInPictures> userNotIn(){
+        return userRepository.userNotUpload();
     }
 }
