@@ -1,5 +1,6 @@
 package hu.uszeged.fenykepalbum.service;
 
+import hu.uszeged.fenykepalbum.dto.EmptyAlbum;
 import hu.uszeged.fenykepalbum.model.AlbumCreateModel;
 import hu.uszeged.fenykepalbum.model.AlbumModel;
 import hu.uszeged.fenykepalbum.model.PictureModel;
@@ -58,5 +59,9 @@ public class AlbumService {
         return albumRepository.
                 findByEmailAndPictureIDFiltered(SecurityContextHolder.
                         getContext().getAuthentication().getName(), pictureid);
+    }
+
+    public List<EmptyAlbum> emptyAlbums(){
+        return albumRepository.albumEmpty();
     }
 }

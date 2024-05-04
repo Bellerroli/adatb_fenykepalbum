@@ -92,6 +92,24 @@
         </table>
     </div>
 </div>
+<div class="table-container">
+    <div class="table-block">
+        <table>
+            <h3>Melyik albumokban nincsenek képek, és kihez tartoznak?</h3>
+            <br>
+            <tr>
+                <th>email cím</th>
+                <th>Teljes neve</th>
+                <th>Album címe</th>
+            </tr>
+            <tr th:each="statistic: ${empty_albums}">
+                <td th:text="${statistic.getEmail()}"></td>
+                <td th:text="${statistic.getFullName()}"></td>
+                <td th:text="${statistic.getTitle()}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 
 </body>

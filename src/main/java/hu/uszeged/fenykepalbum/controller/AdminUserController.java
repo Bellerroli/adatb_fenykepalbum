@@ -113,6 +113,7 @@ public class AdminUserController {
         model.addAttribute("category_statistics", categoryService.categoryNumber());
         model.addAttribute("picture_one_category", pictureService.pictureOneCategory());
         model.addAttribute("user_not_upload", userService.userNotIn());
+        model.addAttribute("empty_albums", albumService.emptyAlbums());
         return "/admin/statistics";
     }
 }
