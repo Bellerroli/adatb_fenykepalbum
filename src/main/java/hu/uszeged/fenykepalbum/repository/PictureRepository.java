@@ -1,7 +1,9 @@
 package hu.uszeged.fenykepalbum.repository;
 
+import hu.uszeged.fenykepalbum.dto.CategoryNumberOnPicture;
 import hu.uszeged.fenykepalbum.dto.PictureDataWithPlace;
 import hu.uszeged.fenykepalbum.dto.PictureOneCategory;
+import hu.uszeged.fenykepalbum.dto.UsedCategoryNumber;
 import hu.uszeged.fenykepalbum.model.PictureModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -59,5 +61,13 @@ public interface PictureRepository extends JpaRepository<PictureModel, Integer> 
     """,
             nativeQuery = true)
     List<PictureOneCategory> oneCategoryInPicture();
+
+    @Query(value = """
+        SELECT kep.kep_id as pictureID,  kep.cim AS title, COUNT(*) AS categoryNumber
+        FROM KEP INNER JOIN KATEGORIA_KEP ON (kep.kep_id = kategoria_kep.kep_id)
+        GROUP BY kep.kep_id, kep.cim
+        ORDER BY kep.kep_id
+""" ,nativeQuery = true)
+    List<CategoryNumberOnPicture> categoryNumberOnPictures();
 
 }

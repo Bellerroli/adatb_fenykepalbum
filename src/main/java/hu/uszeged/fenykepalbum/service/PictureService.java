@@ -1,5 +1,6 @@
 package hu.uszeged.fenykepalbum.service;
 
+import hu.uszeged.fenykepalbum.dto.CategoryNumberOnPicture;
 import hu.uszeged.fenykepalbum.dto.PictureDataWithPlace;
 import hu.uszeged.fenykepalbum.dto.PictureOneCategory;
 import hu.uszeged.fenykepalbum.model.PictureModel;
@@ -105,5 +106,9 @@ public class PictureService {
     }
     public List<PictureOneCategory> pictureOneCategory(){
         return pictureRepository.oneCategoryInPicture();
+    }
+
+    public List<CategoryNumberOnPicture> categoryNumberOnPictures(){
+        return pictureRepository.categoryNumberOnPictures();
     }
 }

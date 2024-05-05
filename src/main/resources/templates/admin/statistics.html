@@ -109,6 +109,22 @@
             </tr>
         </table>
     </div>
+    <div class="table-block">
+        <table>
+            <h3>Kategóriák száma egyes képeken</h3>
+            <br>
+            <tr>
+                <th>Kép cím</th>
+                <th>Kép ID</th>
+                <th>Kategória szám</th>
+            </tr>
+            <tr th:each="statistic: ${categoriesOnPictures}">
+                <td th:text="${statistic.getTitle()}"></td>
+                <td th:text="${statistic.getPictureID()}"></td>
+                <td th:text="${statistic.getCategoryNumber()}"></td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 
